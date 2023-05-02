@@ -24,24 +24,38 @@ header {
     bottom: 42px;
 }
 
-/* .voices-container {
+.voices-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 130px;
+    position: relative;
 }
 
+/* .voices-container h3:hover  {
+} */
 
 .active-container {
     background: url("../images/svgs/active.svg");
+    position: absolute;
     width: 167px;
     height: 176.5px;
-    position: relative;
-    top: -3px;
+    z-index: -1;
+    top: -76px;
 }
 
-.active-page{
-    position: absolute;
-    top: 78px;
-    right: 50px;
-} */
+.active-home {
+    left: -53px;
+}
+
+.active-prenote {
+    left: 145px;
+}
+
+.active-libraries {
+    right: 184px;
+}
+
+.active-login {
+    right: -49px;
+}
