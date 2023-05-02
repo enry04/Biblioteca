@@ -9,7 +9,7 @@
 }
 
 body {
-    padding: 0 2% 0 2%;
+    padding: 0 3% 0 3%;
     background-color: #F0EAD8;
 }
 
@@ -29,6 +29,17 @@ h3 {
     font-size: 24px;
 }
 
+.brown {
+    color: #3D2617 !important;
+}
+
+.white {
+    color: #F0EAD8 !important;
+}
+
+a {
+    text-decoration: none;
+}
 
 @font-face {
     font-family: regular;

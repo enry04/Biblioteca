@@ -1,0 +1,47 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    background: url("../images/svgs/library-icon.svg");
+    width: 165px;
+    height: 160px;
+}
+
+.logo-container h3 {
+    position: absolute;
+    left: 145px;
+    bottom: 42px;
+}
+
+/* .voices-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 130px;
+}
+
+
+.active-container {
+    background: url("../images/svgs/active.svg");
+    width: 167px;
+    height: 176.5px;
+    position: relative;
+    top: -3px;
+}
+
+.active-page{
+    position: absolute;
+    top: 78px;
+    right: 50px;
+} */
