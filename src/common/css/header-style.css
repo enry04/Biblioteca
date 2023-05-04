@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3% 0 3%;
+    padding: 0 4% 0 3%;
 }
 
 .logo-container {
@@ -14,14 +14,17 @@ header {
 
 .logo {
     background: url("../images/svgs/library-icon.png");
-    width: 200px;
-    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 180px;
+    height: 150px;
 }
 
 .logo-container h3 {
     position: absolute;
     left: 150px;
-    bottom: 60px;
+    bottom: 36;
 }
 
 .voices-container {
