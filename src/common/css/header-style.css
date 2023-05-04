@@ -2,10 +2,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 3% 0 3%;
 }
 
 .logo-container {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,18 +13,19 @@ header {
 }
 
 .logo {
-    background: url("../images/svgs/library-icon.svg");
-    width: 165px;
-    height: 160px;
+    background: url("../images/svgs/library-icon.png");
+    width: 200px;
+    height: 200px;
 }
 
 .logo-container h3 {
     position: absolute;
-    left: 145px;
-    bottom: 42px;
+    left: 150px;
+    bottom: 60px;
 }
 
 .voices-container {
+    margin-top: -20px;
     display: flex;
     justify-content: center;
     align-items: center;

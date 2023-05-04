@@ -1,0 +1,39 @@
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    padding-left: 120px;
+}
+
+input:not(input[type="submit"]) {
+    padding: 5px;
+    margin-bottom: 30px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #F0EAD8;
+    width: 220px;
+    font-size: 20px;
+    outline: 0;
+    color: #F0EAD8;
+}
+
+input[type="submit"] {
+    width: 170px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #F0EAD8;
+    font-size: 22px;
+    color: #3D2617;
+}
+
+input[type="submit"]:hover {
+    font-size: 24px;
+}
+
+::placeholder {
+    color: #F0EAD8;
+    opacity: 0.5;
+}

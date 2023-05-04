@@ -1,13 +1,14 @@
-.main-section {
-    margin-top: 90px;
-    background-color: #3D2617;
+section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 75px 270px 75px 80px;
+    padding: 75px calc(3% + 40px) 200px calc(4% + 40px);
     position: relative;
-    border-radius: 5px;
+}
+
+.main-section {
+    background-color: #F0EAD8;
 }
 
 .main-description-container {
@@ -16,7 +17,7 @@
     row-gap: 60px;
 }
 
-.main-description-container h1 {
+h1 {
     letter-spacing: 3px;
     line-height: 1.4;
 }
@@ -28,22 +29,71 @@
 
 .library-container {
     background: url("../../common/images/svgs/library.svg");
-    width: 370px;
-    height: 370px;
+    width: 674px;
+    height: 371px;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.map-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 60px;
+.prenote-section {
+    background-color: #3D2617;
 }
 
-.map-container{
+.custom-shape-divider-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 105px;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+    fill: #3D2617;
+}
+
+.custom-shape-divider-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 123px;
+}
+
+.custom-shape-divider-top .shape-fill {
+    fill: #3D2617;
+}
+
+.click-span {
+    cursor: pointer;
+    text-decoration: underline 2px #F0EAD8;
+    text-underline-offset: 5px;
+}
+
+.map-section {
+    justify-content: center !important;
+    flex-direction: column !important;
+    padding-top: 150px;
+}
+
+.map-container {
     width: 100%;
     height: 700px;
     margin-top: 40px;
