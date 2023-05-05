@@ -51,4 +51,11 @@ switch (CookieManager.getCookie("current_page")) {
         prenoteText.classList.toggle("brown", true);
         librariesText.classList.toggle("brown", true);
         break;
+    default:
+        parentElement.classList.toggle("hide", true);
+        parentElement.classList.toggle("active-home", false);
+        parentElement.classList.toggle("active-prenote", false);
+        parentElement.classList.toggle("active-libraries", false);
+        parentElement.classList.toggle("active-login", false);
+        break;
 }

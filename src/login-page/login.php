@@ -26,7 +26,9 @@
                 <input type="password" class="password" placeholder="Password" required>
                 <input type="submit" value="Conferma">
             </form>
-            <h4 class="brown">Non sei registrato? Crea un account</h4>
+            <h4>
+                <a href="../register-page/register.php" class="brown">Non sei registrato? Crea un account</a>
+            </h4>
         </div>
     </div>
 </body>

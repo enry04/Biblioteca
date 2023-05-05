@@ -45,7 +45,7 @@
         </div>
         <div class="main-description-container">
             <h1 class="extra-bold white">Prendi in prestito un libro creando <br> un account</h1>
-            <h3 class="extra-bold white">Puoi prenotare un prestito di un libro, di un volume di un’ enciclopedia o di una <br>carta geo-politica effettuando l’accesso al sito. <br>Se non hai ancora creato un account puoi <span class="click-span">cliccare qui</span>.<br>Nel caso se l’ opera è già stata presa in prestito, verrai inserito in una coda<br>di attesa fino al momento di restituzione</h3>
+            <h3 class="extra-bold white">Puoi prenotare un prestito di un libro, di un volume di un’ enciclopedia o di una <br>carta geo-politica effettuando l’accesso al sito. <br>Se non hai ancora creato un account puoi <a href="../register-page/register.php" class="click-span white extra-bold">cliccare qui</a>.<br>Nel caso se l’ opera è già stata presa in prestito, verrai inserito in una coda<br>di attesa fino al momento di restituzione</h3>
         </div>
     </section>
     <section class="map-section">

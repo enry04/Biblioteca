@@ -36,3 +36,21 @@ input[type="submit"]:hover {
 input:not(input[type="submit"]):hover::placeholder {
   opacity: 1;
 }
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.start-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.start-row:last-of-type{
+  margin-top: -85px;
+}

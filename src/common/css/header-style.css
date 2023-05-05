@@ -63,3 +63,7 @@ header {
 .active-login {
     right: -49px;
 }
+
+.hide{
+    display: none;
+}
