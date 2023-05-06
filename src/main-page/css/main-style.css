@@ -28,7 +28,7 @@ h1 {
 }
 
 .library-container {
-  background: url("../../common/images/svgs/library.svg");
+  background: url("../../common/images/library.svg");
   width: 674px;
   height: 371px;
   background-position: center;

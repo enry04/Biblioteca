@@ -16,24 +16,24 @@ class MapManager {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         map = new google.maps.Map(this.rootElement, mapOptions);
-        // FetchUtil.postData("./php/read-points.php", {}).then((response) => {
-        //     if (response.status == "success") {
-        //         var imp = JSON.parse(response.data);
-        //         for (let i = 0; i < imp.length; i++) {
-        //             let pLatLng = new google.maps.LatLng(imp[i]['latitudine'], imp[i]['longitudine']);
-        //             var image = 'https://www.appalo.it/quinta/images/formaggio.png';
-        //             let marker = new google.maps.Marker({
-        //                 position: pLatLng,
-        //                 map: map,
-        //                 icon: image,
-        //                 url: "../dairy-page/dairy.php?dairyId=" + imp[i]['id'],
-        //             });
-        //             google.maps.event.addListener(marker, 'click', function () {
-        //                 window.location.href = this.url;
-        //             });
-        //         }
-        //     }
-        // })
+        FetchUtil.postData("./php/read-points.php", {}).then((response) => {
+            if (response.status == "success") {
+                var imp = JSON.parse(response.data);
+                for (let i = 0; i < imp.length; i++) {
+                    let pLatLng = new google.maps.LatLng(imp[i]['latitudine'], imp[i]['longitudine']);
+                    var image = '../common/images/icons/marker-icon.svg';
+                    let marker = new google.maps.Marker({
+                        position: pLatLng,
+                        map: map,
+                        icon: image,
+                        url: "../dairy-page/dairy.php?libraryId=" + imp[i]['id'],
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                        window.location.href = this.url;
+                    });
+                }
+            }
+        })
 
     }
 }

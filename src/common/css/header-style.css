@@ -13,7 +13,7 @@ header {
 }
 
 .logo {
-    background: url("../images/svgs/library-icon.png");
+    background: url("../images/icons/library-icon.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -40,7 +40,7 @@ header {
 } */
 
 .active-container {
-    background: url("../images/svgs/active.svg");
+    background: url("../images/icons/active.svg");
     position: absolute;
     width: 167px;
     height: 176.5px;
