@@ -31,6 +31,7 @@
             </h4>
         </div>
     </div>
+    <script src="./js/login-view.js" type="module"></script>
 </body>
 
 </html>

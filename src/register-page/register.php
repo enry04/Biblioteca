@@ -42,6 +42,7 @@
             </form>
         </div>
     </div>
+    <script src="./js/register-view.js" type="module"></script>
 </body>
 
 </html>
