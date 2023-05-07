@@ -23,20 +23,20 @@
             <h2 class="brown extra-bold">Registrati</h2>
             <form method="post">
                 <div class="row">
-                    <input type="text" class="name-text" placeholder="Nome" required>
-                    <input type="text" class="surname-text" placeholder="Cognome" required>
+                    <input type="text" class="name" placeholder="Nome" required>
+                    <input type="text" class="surname" placeholder="Cognome" required>
                     <input type="email" class="email" placeholder="Email" required>
                 </div>
                 <div class="row">
-                    <input type="password" class="password" placeholder="Password" required>
-                    <input type="password" class="repeating-password" placeholder="Conferma password" required>
                     <input type="text" class="tax-code" placeholder="Codice fiscale" required>
+                    <input type="text" class="username" placeholder="Nome utente" required>
+                    <input type="password" class="password" placeholder="Password" required>
                 </div>
                 <div class="start-row">
                     <input type="number" class="phone-number" placeholder="Numero di telefono (opzionale)">
                 </div>
                 <div class="start-row">
-                    <h4 class="brown">Aggiungi un ulteriore numero</h4>
+                    <h4 class="brown plus-btn">Aggiungi un ulteriore numero</h4>
                 </div>
                 <input type="submit" value="Conferma">
             </form>

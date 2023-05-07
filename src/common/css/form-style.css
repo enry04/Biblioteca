@@ -49,8 +49,9 @@ input:not(input[type="submit"]):hover::placeholder {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  gap: 40px;
 }
 
 .start-row:last-of-type{
-  margin-top: -85px;
+  margin-top: -95px;
 }
