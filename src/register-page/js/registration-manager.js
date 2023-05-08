@@ -39,7 +39,7 @@ class RegistrationManager {
             }
         });
 
-        this.elements.form.addEventListener("submit", (event) => {
+        this.elements.form.addEventListener("submit", async (event) => {
             event.preventDefault();
             this.elements.telephoneNumbers = this.rootElement.querySelectorAll(".phone-number");
             let telephones = [];
@@ -48,32 +48,31 @@ class RegistrationManager {
                     telephones.push(telephone.value);
                 }
             });
-            console.log(telephones);
             const uniqueUserData = {
                 email: this.elements.email.value,
                 username: this.elements.username.value,
                 taxCode: this.elements.taxCode.value,
             }
-            FetchUtil.postData("./php/check-credentials.php", uniqueUserData).then((response) => {
+            await FetchUtil.postData("./php/check-credentials.php", uniqueUserData).then(async (response) => {
                 if (response.status == "already present") {
                     console.log("utente gia esistente");
                 } else {
                     let telephoneData = {};
-                    switch (this.elements.telephoneNumbers.lenght) {
-                        case 0:
+                    switch (telephones.length) {
+                        case 1:
                             telephoneData = {
                                 firstNumber: telephones[0],
                                 counter: telephones.length,
                             }
                             break;
-                        case 1:
+                        case 2:
                             telephoneData = {
                                 firstNumber: telephones[0],
                                 secondNumber: telephones[1],
                                 counter: telephones.length,
                             }
                             break;
-                        case 2:
+                        case 3:
                             telephoneData = {
                                 firstNumber: telephones[0],
                                 secondNumber: telephones[1],
@@ -82,11 +81,37 @@ class RegistrationManager {
                             }
                             break;
                     }
-                    FetchUtil.postData("./php/check-telephone-numbers.php", telephoneData).then((response) => {
-                        if(response.status == "already present"){
-                            
-                        }else {
+                    await FetchUtil.postData("./php/check-telephone-numbers.php", telephoneData).then(async (response) => {
+                        if (response.status == "already present") {
+                            //error
+                        } else {
+                            const userData = {
+                                name: this.elements.name.value,
+                                surname: this.elements.surname.value,
+                                email: uniqueUserData.email,
+                                taxCode: uniqueUserData.taxCode,
+                                username: uniqueUserData.username,
+                                password: this.elements.password.value,
+                            }
 
+                            await FetchUtil.postData("./php/insert-user.php", userData).then(async (response) => {
+                                if (response.status == "success") {
+                                    const phoneData = {
+                                        userId: (JSON.parse(response.data))['LAST_INSERT_ID()'],
+                                        telephoneData: telephoneData,
+                                    }
+                                    console.log(phoneData);
+                                    await FetchUtil.postData("./php/insert-telephone-numbers.php", phoneData).then((response) => {
+                                        if (response.status == "success") {
+                                            location.href = "../login-page/login.php";
+                                        } else {
+                                            console.log(response.data);
+                                        }
+                                    })
+                                } else {
+                                    console.log(response.data);
+                                }
+                            });
                         }
                     });
                 }

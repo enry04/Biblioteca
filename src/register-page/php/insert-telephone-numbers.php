@@ -21,11 +21,9 @@ $result = null;
 try {
 
     $query = $pdo->prepare("INSERT INTO tUtente (nome, cognome, codiceFiscale, email, password, nomeUtente ) VALUES (:name, :surname, :taxCode,:email, :password, :username)");
-    $query->execute(['name' => $name, 'surname' => $surname, 'taxCode' => $taxCode, 'username' => $username, 'password' => $password, 'email' => $email]);
-    $getIdQuery = $pdo->query("SELECT LAST_INSERT_ID() FROM tUtente");
-    $userData = $getIdQuery->fetch();
+    $query->execute(['name]);
     $result = array(
-        'data' => json_encode($userData),
+        'data' => null,
         'status' => "success",
     );
 } catch (PDOException $e) {
