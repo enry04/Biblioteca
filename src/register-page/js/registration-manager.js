@@ -99,8 +99,8 @@ class RegistrationManager {
                                     const phoneData = {
                                         userId: (JSON.parse(response.data))['LAST_INSERT_ID()'],
                                         telephoneData: telephoneData,
+                                        telephones: telephones,
                                     }
-                                    console.log(phoneData);
                                     await FetchUtil.postData("./php/insert-telephone-numbers.php", phoneData).then((response) => {
                                         if (response.status == "success") {
                                             location.href = "../login-page/login.php";

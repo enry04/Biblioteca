@@ -9,19 +9,18 @@ $json = file_get_contents("php://input");
 $data = json_decode($json);
 
 
-$name = $data->name;
-$surname = $data->surname;
-$email = $data->email;
-$taxCode = $data->taxCode;
-$username = $data->username;
-$password = $data->password;
+$userId = $data->userId;
+$counter = $data->telephoneData->counter;
+$phones = $data->telephones;
 
 $result = null;
 
 try {
 
-    $query = $pdo->prepare("INSERT INTO tUtente (nome, cognome, codiceFiscale, email, password, nomeUtente ) VALUES (:name, :surname, :taxCode,:email, :password, :username)");
-    $query->execute(['name]);
+    for ($i = 0; $i < $counter; $i++) {
+        $query = $pdo->prepare("INSERT INTO tNumeroTelefono (idUtente, telefono) VALUES (:userId, :telephone)");
+        $query->execute(['userId' => $userId, 'telephone' => $phones[$i]]);
+    }
     $result = array(
         'data' => null,
         'status' => "success",
