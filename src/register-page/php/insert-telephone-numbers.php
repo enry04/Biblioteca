@@ -10,7 +10,7 @@ $data = json_decode($json);
 
 
 $userId = $data->userId;
-$counter = $data->telephoneData->counter;
+$counter = $data->counter;
 $phones = $data->telephones;
 
 $result = null;

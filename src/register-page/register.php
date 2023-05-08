@@ -25,21 +25,31 @@
                 <div class="row">
                     <input type="text" class="name" placeholder="Nome" required>
                     <input type="text" class="surname" placeholder="Cognome" required>
-                    <input type="email" class="email" placeholder="Email" required>
+                    <div class="input-container">
+                        <input type="email" class="email" placeholder="Email" required>
+                        <h4 class="hide email-error">Email già in uso</h4>
+                    </div>
                 </div>
                 <div class="row">
-                    <input type="text" class="tax-code" placeholder="Codice fiscale" required>
-                    <input type="text" class="username" placeholder="Nome utente" required>
+                    <div class="input-container">
+                        <input type="text" class="tax-code" placeholder="Codice fiscale" required>
+                        <h4 class="hide tax-code-error">Codice fiscale già in uso</h4>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" class="username" placeholder="Nome utente" required>
+                        <h4 class="hide username-error">Nome utente già in uso</h4>
+                    </div>
                     <input type="password" class="password" placeholder="Password" required>
                 </div>
                 <div class="start-row">
-                    <input type="number" class="phone-number" placeholder="Numero di telefono (opzionale)">
-                </div>
-                <div class="start-row">
-                    <h4 class="brown plus-btn">Aggiungi un ulteriore numero</h4>
+                    <div class="input-container">
+                        <input type="number" class="phone-number" placeholder="Numero di telefono (opzionale)">
+                        <h4 class="hide first-telephone-error">Numero di telefono già in uso</h4>
+                    </div>
                 </div>
                 <input type="submit" value="Conferma">
             </form>
+            <h4 class="brown plus-btn">Aggiungi un ulteriore numero di telefono</h4>
         </div>
     </div>
     <script src="./js/register-view.js" type="module"></script>

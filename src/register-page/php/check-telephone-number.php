@@ -7,12 +7,11 @@ $pdo = $connMySQL->getConnection();
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-$username = $data->username;
-$email = $data->email;
-$taxCode = $data->taxCode;
+$number = $data->number;
 
-$query = $pdo->prepare('SELECT * FROM tUtente WHERE email=:email AND nomeUtente=:username AND codiceFiscale=:taxCode');
-$query->execute(['username' => $username, 'email' => $email, 'taxCode' => $taxCode]);
+$query = $pdo->prepare("SELECT * FROM tNumeroTelefono WHERE telefono=:number");
+$query->execute(['number' => $number]);
+
 $userData = $query->fetch();
 $result = null;
 
