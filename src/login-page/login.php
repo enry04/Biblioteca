@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../common/css/header-style.css">
     <link rel="stylesheet" href="../common/css/form-style.css">
     <link rel="stylesheet" href="./css/login-style.css">
+    <link rel="icon" href="../common/images/icons/volta-icon.png">
 </head>
 
 <body>
@@ -23,7 +24,10 @@
             <h2 class="brown extra-bold">Accedi</h2>
             <form method="post">
                 <input type="text" class="username" placeholder="Nome utente" required>
-                <input type="password" class="password" placeholder="Password" required>
+                <div class="input-container">
+                    <input type="password" class="password" placeholder="Password" required>
+                    <h4 class="error-text hide">Credenziali errate</h4>
+                </div>
                 <input type="submit" value="Conferma">
             </form>
             <h4>

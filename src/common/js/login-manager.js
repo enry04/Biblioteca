@@ -16,6 +16,7 @@ class LoginManager {
         this.elements = {
             username: this.rootElement.querySelector(".username"),
             password: this.rootElement.querySelector(".password"),
+            error: this.rootElement.querySelector(".error-text"),
             form: this.rootElement.querySelector("form"),
         }
     }
@@ -23,6 +24,9 @@ class LoginManager {
     initEventListeners() {
         this.elements.form.addEventListener("submit", (event) => {
             event.preventDefault();
+            this.elements.username.classList.toggle("error", false);
+            this.elements.password.classList.toggle("error", false);
+            this.elements.error.classList.toggle("hide", true);
             const userData = {
                 username: this.elements.username.value,
                 password: this.elements.password.value,
@@ -30,10 +34,11 @@ class LoginManager {
 
             FetchUtil.postData("../common/php/check-user.php", userData).then((response) => {
                 if (response.status == "already present") {
-                    //error
-                    this.elements.form.reset();
-                } else {
                     location.href = "../main-page/main.php";
+                } else {
+                    this.elements.username.classList.toggle("error", true);
+                    this.elements.password.classList.toggle("error", true);
+                    this.elements.error.classList.toggle("hide", false);
                 }
             });
 

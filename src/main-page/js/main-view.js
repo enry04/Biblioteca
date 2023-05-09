@@ -5,6 +5,6 @@ const mapElement = document.querySelector(".map-container");
 const mapManager = new MapManager(mapElement);
 mapManager.init();
 
-const parentElement = document.querySelector(".account-container");
+const parentElement = document.querySelector(".main-container");
 const loginManager = new LoginManager(parentElement);
 loginManager.init();

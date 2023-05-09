@@ -45,6 +45,7 @@ form {
 }
 
 input:not(input[type="submit"]) {
+  border: none;
   border-bottom: 1px solid #f0ead8 !important;
   color: #f0ead8;
 }

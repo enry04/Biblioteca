@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../common/css/header-style.css">
     <link rel="stylesheet" href="../common/css/form-style.css">
     <link rel="stylesheet" href="./css/register-style.css">
+    <link rel="icon" href="../common/images/icons/volta-icon.png">
 </head>
 
 <body>

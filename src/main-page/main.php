@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="../common/css/form-style.css">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0RLgPIM87iDhK6rJww_Wb6VuIMXnjS_U"></script>
+    <link rel="icon" href="../common/images/icons/volta-icon.png">
 </head>
 
 <body>
@@ -36,10 +37,13 @@
         </div>
     </section>
     <section class="prenote-section">
-        <div class="account-container">
+        <div class="main-container">
             <form method="post">
                 <input type="text" class="username" placeholder="Nome utente" required>
-                <input type="password" class="password" placeholder="Password" required>
+                <div class="input-container">
+                    <input type="password" class="password" placeholder="Password" required>
+                    <h4 class="hide error-text">Credenziali errate</h4>
+                </div>
                 <input type="submit" value="Accedi">
             </form>
         </div>
