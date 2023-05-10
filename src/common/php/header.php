@@ -1,3 +1,7 @@
+<?php
+    require_once("../common/php/token-manager.php");
+?>
+
 <header>
     <div class="logo-container">
         <div class="logo"></div>

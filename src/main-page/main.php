@@ -37,16 +37,30 @@
         </div>
     </section>
     <section class="prenote-section">
-        <div class="main-container">
-            <form method="post">
-                <input type="text" class="username" placeholder="Nome utente" required>
-                <div class="input-container">
-                    <input type="password" class="password" placeholder="Password" required>
-                    <h4 class="hide error-text">Credenziali errate</h4>
-                </div>
-                <input type="submit" value="Accedi">
-            </form>
+        <?php
+        if (TokenManager::isAuthenticated()) {
+        ?>
+        <div class="book-cover-container">
+            <h2>
+                <a class="extra-bold brown" href="../">Prenota</a>
+            </h2>
         </div>
+        <?php
+        } else {
+        ?>
+            <div class="main-container">
+                <form method="post">
+                    <input type="text" class="username" placeholder="Nome utente" required>
+                    <div class="input-container">
+                        <input type="password" class="password" placeholder="Password" required>
+                        <h4 class="hide error-text">Credenziali errate</h4>
+                    </div>
+                    <input type="submit" value="Accedi">
+                </form>
+            </div>
+        <?php
+        }
+        ?>
         <div class="main-description-container">
             <h1 class="extra-bold white">Prendi in prestito un libro creando <br> un account</h1>
             <h3 class="extra-bold white">Puoi prenotare un prestito di un libro, di un volume di un’ enciclopedia o di una <br>carta geo-politica effettuando l’accesso al sito. <br>Se non hai ancora creato un account puoi <a href="../register-page/register.php" class="click-span white extra-bold">cliccare qui</a>.<br>Nel caso se l’ opera è già stata presa in prestito, verrai inserito in una coda<br>di attesa fino al momento di restituzione</h3>

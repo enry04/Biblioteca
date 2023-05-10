@@ -59,6 +59,25 @@ input[type="submit"] {
   color: #3d2617;
 }
 
+.book-cover-container {
+  background: url("../../common/images/book-cover.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 286px;
+  height: 384px;
+  position: relative;
+}
+
+.book-cover-container h2{
+  background-color: #f0ead8;
+  position: absolute;
+  top: 161px;
+  left: 74px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
 .custom-shape-divider-bottom {
   position: absolute;
   bottom: 0;
