@@ -16,6 +16,10 @@ body {
     font-family: extra-bold !important;
 }
 
+.aguafina {
+    font-family: aguafina !important;
+}
+
 h1 {
     font-size: 48px;
 }
@@ -48,4 +52,9 @@ a {
 @font-face {
     font-family: extra-bold;
     src: url("../font/AbhayaLibre-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: aguafina;
+    src: url("../font/AguafinaScript-Regular.ttf");
 }

@@ -42,7 +42,7 @@
         ?>
         <div class="book-cover-container">
             <h2>
-                <a class="extra-bold brown" href="../">Prenota</a>
+                <a class="aguafina white" href="">Prenota</a>
             </h2>
         </div>
         <?php
