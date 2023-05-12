@@ -38,9 +38,6 @@ h1 {
 
 .prenote-section {
   background-color: #3d2617;
-  /* background: linear-gradient(90deg, rgba(29, 5, 0, .5), rgba(61, 0, 0, .1) 20%, transparent, rgba(61, 0, 0, .1) 60%, rgba(29, 5, 0, .5)),
-  linear-gradient(180deg, transparent 0, transparent 10px, rgba(255, 191, 0, .4) 0, rgba(255, 191, 0, .1) 15px, transparent 50px),
-  linear-gradient(180deg, #543721 0, #5a3b23 10px, #7b5130 0, #5f432d); */
 }
 
 form {

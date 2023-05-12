@@ -25,10 +25,25 @@
         </form>
     </section>
     <main>
-        <section class="bookshelf-section"></section>
-        <section class="bookshelf-section"></section>
-        <section class="bookshelf-section"></section>
-        </main>
+        <section class="bookshelf-section">
+            <h1 class="aguafina white title-text">I nostri libri</h1>
+            <div class="books-container">
+
+            </div>
+        </section>
+        <section class="bookshelf-section">
+            <h1 class="aguafina white title-text">I nostri volumi</h1>
+            <div class="volumes-container">
+
+            </div>
+        </section>
+        <section class="bookshelf-section">
+            <h1 class="aguafina white title-text">Le nostre carte geo-politiche</h1>
+            <div class="papers-container">
+                
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

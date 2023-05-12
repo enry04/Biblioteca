@@ -4,7 +4,7 @@
     margin-top: 130px;
 }
 
-form{
+form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,11 +23,11 @@ form{
     border-radius: 10px;
 }
 
-::placeholder{
+::placeholder {
     color: #3D2617;
 }
 
-.submit-btn{
+.submit-btn {
     border-radius: 10px;
     background-color: #3D2617;
     color: #F8F6EF;
@@ -36,3 +36,36 @@ form{
     width: 197px;
     cursor: pointer;
 }
+
+main {
+    margin: 150px 50px 100px 50px;
+}
+
+.bookshelf-section {
+     background: linear-gradient(90deg, rgba(29, 5, 0, .5), rgba(61, 0, 0, .1) 20%, transparent, rgba(61, 0, 0, .1) 60%, rgba(29, 5, 0, .5)),
+    linear-gradient(180deg, transparent 0, transparent 10px, rgba(255, 191, 0, .4) 0, rgba(255, 191, 0, .1) 15px, transparent 50px),
+    linear-gradient(180deg, #543721 0, #5a3b23 10px, #7b5130 0, #5f432d); 
+    padding: 50px;
+}
+
+.bookshelf-section:nth-of-type(1){
+    border-radius: 2px 2px 0 0;
+}
+
+.title-text{
+    font-size: 80px;
+    font-weight: 100;
+    text-align: center;
+}
+
+/*INSERT INTO tOpera (titolo, isbn, dataPubblicazione, idScaffale, idCasaEditrice, numeroProgressivo, copertina) VALUES 
+ ("Hunger games," '9325468771'),
+("La strada", '0241392364'),
+("Il nuovo mondo", '8889337505'),
+("1984", '0553497783'),
+("Noi", '9788884868106'),
+("Vox", '7659201782'),
+("Cecità", '0132139318'),
+("Battle Royale"),
+("Anna"),
+("Il labirinto") */
