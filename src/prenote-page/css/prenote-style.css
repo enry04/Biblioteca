@@ -37,7 +37,8 @@ form {
     cursor: pointer;
 }
 
-main {
+main,
+.filter-section {
     margin: 150px 50px 100px 50px;
 }
 
@@ -90,7 +91,8 @@ main {
 
 .books-container,
 .volumes-container,
-.papers-container {
+.papers-container,
+.filters-container {
     display: flex;
     justify-content: center;
     column-gap: 70px;

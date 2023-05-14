@@ -42,7 +42,7 @@
         ?>
         <div class="book-cover-container">
             <h2>
-                <a class="aguafina white" href="">Prenota</a>
+                <a class="aguafina white" href="../prenote-page/prenote.php">Prenota</a>
             </h2>
         </div>
         <?php
