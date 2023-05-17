@@ -22,7 +22,7 @@ if ($userData != null) {
         'status' => "already present",
     );
 
-    TokenManager::authenticate($userData['id'], $userData['tipologia']);
+    TokenManager::authenticate($userData['id'], 'utente');
 } else {
     $result = array(
         'data' => null,

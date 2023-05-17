@@ -54,23 +54,25 @@ main,
 .next {
     cursor: pointer;
     position: absolute;
-    top: 70%;
+    top: 73%;
     transform: translate(0, -50%);
     width: auto;
-    color: #F0EAD8;
+    color: #3D2617;
+    padding: 10px;
+    background-color: #F0EAD8;
+    border-radius: 50%;
     font-weight: bold;
     font-size: 60px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
     user-select: none;
 }
 
 .next {
-    right: 40px;
+    right: 130px;
 }
 
 .prev {
-    left: 40px;
+    left: 130px;
 }
 
 .bookshelf-section:nth-of-type(1) {

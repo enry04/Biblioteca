@@ -27,8 +27,8 @@
     <section class="bookshelf-section filter-section hide">
         <h1 class="aguafina white title-text">Le nostre opere</h1>
         <div class="filters-container">
-            <a class="prev"><</a>
-            <a class="next">></a>
+            <a class="filter-prev prev"><</a>
+            <a class="filter-next next">></a>
         </div>
     </section>
     <main>
