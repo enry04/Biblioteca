@@ -1,3 +1,5 @@
+import FetchUtil from "../../common/js/fetch-util";
+
 class FilterManager {
     constructor(parentElement) {
         this.rootElement = parentElement;
@@ -27,6 +29,16 @@ class FilterManager {
             } else {
                 this.elements.main.classList.toggle("hide", true);
                 this.elements.filerSection.classList.toggle("hide", false);
+                const filterData = {
+                    filter: this.elements.filter.value,
+                }
+                FetchUtil.postData("./php/read-filter.php", filterData).then((response) => {
+                    if (response.status == "success") {
+
+                    } else {
+
+                    }
+                });
             }
         });
     }

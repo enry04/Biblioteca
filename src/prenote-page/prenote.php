@@ -24,14 +24,14 @@
             <input type="submit" value="Cerca" class="submit-btn">
         </form>
     </section>
-    <section class="bookshelf-section filter-section">
+    <section class="bookshelf-section filter-section hide">
         <h1 class="aguafina white title-text">Le nostre opere</h1>
         <div class="filters-container">
             <a class="prev"><</a>
             <a class="next">></a>
         </div>
     </section>
-    <main class="hide">
+    <main>
         <section class="bookshelf-section book-section">
             <h1 class="aguafina white title-text">I nostri libri</h1>
             <div class="books-container">

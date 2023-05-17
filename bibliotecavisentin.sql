@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Mag 13, 2023 alle 15:32
+-- Creato il: Mag 17, 2023 alle 18:50
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.0.25
 
@@ -509,6 +509,51 @@ CREATE TABLE `tScrittura` (
   `idAutore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `tScrittura`
+--
+
+INSERT INTO `tScrittura` (`id`, `idOpera`, `idAutore`) VALUES
+(55, 1, 1),
+(56, 2, 2),
+(57, 3, 3),
+(58, 4, 4),
+(59, 5, 5),
+(60, 6, 6),
+(61, 7, 7),
+(62, 8, 8),
+(63, 9, 9),
+(64, 10, 10),
+(65, 15, 11),
+(66, 24, 12),
+(67, 33, 13),
+(68, 14, 14),
+(69, 15, 15),
+(70, 16, 16),
+(71, 17, 17),
+(72, 18, 18),
+(73, 19, 19),
+(74, 20, 20),
+(75, 21, 1),
+(76, 22, 2),
+(77, 23, 3),
+(78, 24, 4),
+(79, 25, 5),
+(80, 26, 6),
+(81, 27, 7),
+(82, 28, 8),
+(83, 29, 9),
+(84, 30, 10),
+(85, 31, 11),
+(86, 32, 12),
+(87, 33, 13),
+(88, 1, 14),
+(89, 2, 15),
+(90, 3, 16),
+(91, 8, 17),
+(92, 10, 18),
+(93, 21, 19);
+
 -- --------------------------------------------------------
 
 --
@@ -786,7 +831,7 @@ ALTER TABLE `tScaffale`
 -- AUTO_INCREMENT per la tabella `tScrittura`
 --
 ALTER TABLE `tScrittura`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT per la tabella `tStanza`
