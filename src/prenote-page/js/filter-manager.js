@@ -5,7 +5,7 @@ class FilterManager {
         this.rootElement = parentElement;
         this.elements = {};
         this.currentFirst = 0;
-        this.currentMax;
+        this.currentMax = 5;
         this.nOperas;
     }
 
@@ -23,17 +23,21 @@ class FilterManager {
             operasContainer: this.rootElement.querySelector(".filters-container"),
             nextBtn: this.rootElement.querySelector(".filter-next"),
             prevBtn: this.rootElement.querySelector(".filter-prev"),
-            currentOperas: new Map(),
+            titleText: this.rootElement.querySelector(".filter-title"),
+            notFound: this.rootElement.querySelector(".not-found"),
+            currentOperas: null,
         }
     }
 
     initEventsListeners() {
         this.elements.form.addEventListener("submit", (event) => {
-            this.removeChilds();
             event.preventDefault();
+            this.removeChilds();
+            this.elements.currentOperas = new Map();
             if (this.elements.filter.value == "") {
                 this.elements.main.classList.toggle("hide", false);
                 this.elements.filerSection.classList.toggle("hide", true);
+                this.elements.notFound.classList.toggle("hide", true);
             } else {
                 this.elements.main.classList.toggle("hide", true);
                 this.elements.filerSection.classList.toggle("hide", false);
@@ -41,29 +45,58 @@ class FilterManager {
                     filter: this.elements.filter.value,
                 }
                 FetchUtil.postData("./php/read-filter.php", filterData).then((response) => {
-                    let parseData = JSON.parse(response.data);
-                    console.log(parseData);
                     if (response.status == "success") {
+                        this.elements.filerSection.classList.toggle("hide", false);
+                        this.elements.titleText.classList.toggle("hide", false);
+                        this.elements.notFound.classList.toggle("hide", true);
+                        let parseData = JSON.parse(response.data);
                         for (let i = 0; i < parseData.length; i++) {
                             this.elements.currentOperas.set(parseData[i]['id'], parseData[i]['copertina']);
                         }
                         this.checkOperas();
                         this.createDivs();
                         this.showBooks();
+                        this.addBookListeners();
                     } else {
-                        console.log(response.status);
+                        this.elements.filerSection.classList.toggle("hide", true);
+                        this.elements.titleText.classList.toggle("hide", true);
+                        this.elements.notFound.classList.toggle("hide", false);
                     }
                 });
             }
         });
+
+        this.elements.prevBtn.addEventListener("click", (event) => {
+            if (this.currentFirst > 0) {
+                this.currentFirst--;
+                this.currentMax--;
+                this.showBooks();
+            }
+        });
+
+        this.elements.nextBtn.addEventListener("click", (event) => {
+            if (this.currentMax < this.nOperas) {
+                this.currentFirst++;
+                this.currentMax++;
+                this.showBooks();
+            }
+        });
+    }
+
+    addBookListeners() {
+        this.elements.operasContainer.querySelectorAll(".book-container").forEach(book => {
+            book.addEventListener("click", (event) => {
+                console.log(event.target.getAttribute("operaid"));
+                // location.href = "../main-page/main.php?" + event.target.operaId;
+            });
+        });
     }
 
     removeChilds() {
-        let divs = this.rootElement.querySelectorAll(".opera");
-        console.log(divs);
-        divs.forEach(div => {
-            div.remove();
-        });
+        let divs = this.elements.operasContainer.getElementsByClassName("opera");
+        while (divs.length > 0) {
+            divs[0].parentNode.removeChild(divs[0]);
+        }
     }
 
     checkOperas() {
@@ -105,6 +138,18 @@ class FilterManager {
             this.elements.prevBtn.classList.toggle("hide", true);
             for (let i = 0; i < this.elements.currentOperas.size; i++) {
                 this.elements.operasContainer.querySelector(`[id="${i}"]`).classList.toggle("hide", false);
+            }
+        } else {
+            this.elements.nextBtn.classList.toggle("hide", false);
+            this.elements.prevBtn.classList.toggle("hide", false);
+            for (let i = this.currentFirst; i < this.currentMax; i++) {
+                this.elements.operasContainer.querySelector(`[id="${i}"]`).classList.toggle("hide", false);
+            }
+            for (let i = 0; i < this.currentFirst; i++) {
+                this.elements.operasContainer.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
+            }
+            for (let i = this.currentMax; i < this.nOperas; i++) {
+                this.elements.operasContainer.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
             }
         }
 

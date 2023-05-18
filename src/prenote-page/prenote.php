@@ -25,12 +25,13 @@
         </form>
     </section>
     <section class="bookshelf-section filter-section hide">
-        <h1 class="aguafina white title-text">Le nostre opere</h1>
+        <h1 class="aguafina white title-text filter-title">Le nostre opere</h1>
         <div class="filters-container">
             <a class="filter-prev prev"><</a>
             <a class="filter-next next">></a>
         </div>
     </section>
+    <h2 class="not-found hide">Nessun risultato trovato</h2>
     <main>
         <section class="bookshelf-section book-section">
             <h1 class="aguafina white title-text">I nostri libri</h1>

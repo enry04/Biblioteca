@@ -13,15 +13,15 @@ require_once("../common/php/token-manager.php");
         <h3>
             <a class="brown extra-bold home" href="../main-page/main.php">Home</a>
         </h3>
+        <h3>
+            <a class="brown extra-bold prenote" href="../prenote-page/prenote.php">Prenota</a>
+        </h3>
+        <h3>
+            <a class="brown extra-bold libraries" href="../main-page/main.php#map">Le biblioteche</a>
+        </h3>
         <?php
         if (TokenManager::isAuthenticated()) {
         ?>
-            <h3>
-                <a class="brown extra-bold prenote" href="../prenote-page/prenote.php">Prenota</a>
-            </h3>
-            <h3>
-                <a class="brown extra-bold libraries" href="">Le biblioteche</a>
-            </h3>
             <h3>
                 <a class="brown extra-bold login" href="">Le mie prenotazioni</a>
             </h3>
@@ -31,12 +31,6 @@ require_once("../common/php/token-manager.php");
         <?php
         } else {
         ?>
-            <h3>
-                <a class="brown extra-bold prenote" href="">Prenota</a>
-            </h3>
-            <h3>
-                <a class="brown extra-bold libraries" href="">Le biblioteche</a>
-            </h3>
             <h3>
                 <a class="brown extra-bold login" href="../login-page/login.php">Accedi</a>
             </h3>

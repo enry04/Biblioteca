@@ -84,6 +84,11 @@ main,
     padding-bottom: 10px;
 }
 
+.filter-section {
+    border-radius: 2px;
+    padding-bottom: 10px;
+}
+
 .title-text {
     font-size: 80px;
     font-weight: 100;
@@ -104,8 +109,16 @@ main,
 .book-container {
     width: 200px;
     height: 300px;
+    min-width: 200px;
+    min-height: 300px;
     margin-left: 14px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 100px;
+    color: #ff2929ee;
 }
