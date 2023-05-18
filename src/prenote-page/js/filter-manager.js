@@ -86,8 +86,7 @@ class FilterManager {
     addBookListeners() {
         this.elements.operasContainer.querySelectorAll(".book-container").forEach(book => {
             book.addEventListener("click", (event) => {
-                console.log(event.target.getAttribute("operaid"));
-                // location.href = "../main-page/main.php?" + event.target.operaId;
+                location.href = "../book-page/book.php?operaId=" + event.target.getAttribute("operaid");
             });
         });
     }

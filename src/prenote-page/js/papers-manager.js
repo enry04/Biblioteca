@@ -40,6 +40,7 @@ class PapersManager {
                     this.rootElement.appendChild(div);
                 });
                 this.showBooks();
+                this.addBookEventListeners();
             } else {
                 console.log(response.status);
             }
@@ -74,8 +75,14 @@ class PapersManager {
                 this.showBooks();
             }
         });
+    }
 
-
+    addBookEventListeners() {
+        this.rootElement.querySelectorAll(".book-container").forEach(book => {
+            book.addEventListener("click", (event) => {
+                location.href = "../book-page/book.php?operaId=" + event.target.id;
+            });
+        });
     }
 
 }
