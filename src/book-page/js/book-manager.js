@@ -13,6 +13,7 @@ class BookManager {
 
     initElements() {
         this.elements = {
+            image: this.rootElement.querySelector(".book-container"),
             title: this.rootElement.querySelector(".title"),
             authors: this.rootElement.querySelector(".authors"),
             date: this.rootElement.querySelector(".date"),
@@ -20,6 +21,12 @@ class BookManager {
             home: this.rootElement.querySelector(".home"),
             typology: this.rootElement.querySelector(".typology"),
             state: this.rootElement.querySelector(".state"),
+            encyclopedia: this.rootElement.querySelector(".encyclopedia"),
+            encyclopediaText: this.rootElement.querySelector(".encyclopedia-text"),
+            volume: this.rootElement.querySelector(".volume"),
+            volumeText: this.rootElement.querySelector(".number-text"),
+            paperDate: this.rootElement.querySelector(".paper-date"),
+            paperDateText: this.rootElement.querySelector(".date-text"),
         }
     }
 
@@ -27,32 +34,48 @@ class BookManager {
 
     }
 
-    setTitle() {
-
+    setImg(img) {
+        this.elements.image.style.backgroundImage = `url(${img})`;
     }
 
-    setAuthors() {
-
+    setTitle(title) {
+        this.elements.title.textContent = title;
     }
 
-    setDate() {
-
+    setAuthors(authors) {
+        this.elements.authors.textContent = authors;
     }
 
-    setIsbn() {
-
+    setDate(date) {
+        this.elements.date.textContent = date;
     }
 
-    setHome(){
-
+    setIsbn(isbn) {
+        this.elements.isbn.textContent = isbn;
     }
 
-    setTypology() {
-
+    setHome(home) {
+        this.elements.home.textContent = home;
     }
 
-    setState(){
+    setTypology(typology) {
+        this.elements.typology.textContent = typology;
+    }
 
+    setState(state) {
+        this.elements.state.textContent = state;
+    }
+
+    setEncyclopedia(encyclopedia) {
+        this.elements.encyclopedia.textContent = encyclopedia;
+    }
+
+    setVolume(volume) {
+        this.elements.volume.textContent = volume;
+    }
+
+    setPaperDate(paperDate) {
+        this.elements.paperDate.textContent = paperDate;
     }
 }
 

@@ -22,14 +22,18 @@
         <div class="main-container">
             <div class="book-container"></div>
             <div class="description-container">
+                <h3 class="brown extra-bold">Tipologia: <span class="brown typology"></span></h3>
+                <h3 class="brown extra-bold encyclopedia-text">Enciclopedia di riferimento: <span class="brown encyclopedia"></span></h3>
+                <h3 class="brown extra-bold number-text">Numero volume: <span class="brown volume"></span></h3>
                 <h3 class="brown extra-bold">Titolo: <span class="brown title"></span></h3>
                 <h3 class="brown extra-bold">Autori: <span class="brown authors"></span></h3>
                 <h3 class="brown extra-bold">Data di pubblicazione: <span class="brown date"></span></h3>
                 <h3 class="brown extra-bold">ISBN: <span class="brown isbn"></span></h3>
                 <h3 class="brown extra-bold">Casa editrice: <span class="brown home"></span></h3>
-                <h3 class="brown extra-bold">Tipologia: <span class="brown typology"></span></h3>
+                <h3 class="brown extra-bold date-text">Data di riferimento: <span class="brown paper-date"></span></h3>
                 <h3 class="brown extra-bold">Stato: <span class="brown state"></span></h3>
             </div>
+            <input type="button" value="Prenota libro">
         </div>
     </div>
     <script src="./js/book-view.js" type="module"></script>

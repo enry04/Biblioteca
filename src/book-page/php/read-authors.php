@@ -9,14 +9,14 @@ $data = json_decode($json);
 
 $operaId = $data->operaId;
 
-$query = $pdo->prepare('SELECT * FROM tOpera INNER JOIN tCasaEditrice ON idCasaEditrice = tCasaEditrice.id INNER JOIN tTipologia ON tOpera.idTipologia = tTipologia.id  WHERE tOpera.id = :operaId');
+$query = $pdo->prepare('SELECT * FROM tScrittura INNER JOIN tAutore ON idAutore = tAutore.id WHERE idOpera = :operaId');
 $query->execute(['operaId' => $operaId]);
-$userData = $query->fetch();
+$userData = $query->fetchAll();
 $result = null;
 
 if ($userData != null) {
     $result = array(
-        'data' => $userData,
+        'data' => json_encode($userData),
         'status' => "success",
     );
 } else {

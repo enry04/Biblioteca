@@ -7,10 +7,10 @@ $pdo = $connMySQL->getConnection();
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-$operaId = $data->operaId;
+$encyclopediaId = $data->encyclopediaId;
 
-$query = $pdo->prepare('SELECT * FROM tOpera INNER JOIN tCasaEditrice ON idCasaEditrice = tCasaEditrice.id INNER JOIN tTipologia ON tOpera.idTipologia = tTipologia.id  WHERE tOpera.id = :operaId');
-$query->execute(['operaId' => $operaId]);
+$query = $pdo->prepare('SELECT * FROM tEnciclopedia WHERE id = :encyclopediaId');
+$query->execute(['encyclopediaId' => $encyclopediaId]);
 $userData = $query->fetch();
 $result = null;
 
