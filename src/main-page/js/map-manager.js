@@ -26,7 +26,7 @@ class MapManager {
                         position: pLatLng,
                         map: map,
                         icon: image,
-                        url: "../dairy-page/dairy.php?libraryId=" + imp[i]['id'],
+                        url: "../library-page/library.php?libraryId=" + imp[i]['id'],
                     });
                     google.maps.event.addListener(marker, 'click', function () {
                         window.location.href = this.url;
