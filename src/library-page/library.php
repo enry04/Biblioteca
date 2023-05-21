@@ -25,7 +25,7 @@
         </form>
     </section>
     <section class="bookshelf-section filter-section hide">
-        <h1 class="aguafina white title-text filter-title">Le nostre opere</h1>
+        <h1 class="aguafina white title-text filter-title">Le opere presenti nella biblioteca di <span class="aguafina white filter-city"></span></h1>
         <div class="filters-container">
             <a class="filter-prev prev"><</a>
             <a class="filter-next next">></a>
@@ -41,7 +41,7 @@
             </div>
         </section>
     </main>
-    <script src="./js/library-view.js"></script>
+    <script src="./js/library-view.js" type="module"></script>
 </body>
 
 </html>
