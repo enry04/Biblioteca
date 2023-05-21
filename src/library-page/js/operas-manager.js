@@ -44,7 +44,7 @@ class OperasManager {
                     div.style.cursor = "pointer";
                     div.style.transition = "all 1s";
                     div.id = counter;
-                    div.setAttribute("operaId", bookData['id']);
+                    div.setAttribute("operaId", bookData['idOpera']);
                     div.classList.toggle("hide", true);
                     this.rootElement.appendChild(div);
                     counter++;
@@ -91,7 +91,7 @@ class OperasManager {
 
     initEventListeners() {
         this.elements.btnPrev.addEventListener("click", (event) => {
-            if (this.currentFirst > 1) {
+            if (this.currentFirst > 0) {
                 this.currentFirst--;
                 this.currentMax--;
                 this.showBooks();
@@ -99,7 +99,7 @@ class OperasManager {
         });
 
         this.elements.btnNext.addEventListener("click", (event) => {
-            if (this.currentMax < 11) {
+            if (this.currentMax < this.nBooks) {
                 this.currentFirst++;
                 this.currentMax++;
                 this.showBooks();

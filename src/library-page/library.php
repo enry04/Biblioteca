@@ -15,7 +15,7 @@
 <body>
     <?php
     require_once("../common/php/token-manager.php");
-    TokenManager::setPage("prenote");
+    TokenManager::setPage("libraries");
     require_once("../common/php/header.php");
     ?>
     <section class="search-bar-section">

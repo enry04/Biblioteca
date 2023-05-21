@@ -9,7 +9,7 @@ $data = json_decode($json);
 
 $libraryId = $data->libraryId;
 
-$query = $pdo->prepare("SELECT * FROM tOpera INNER JOIN tScaffale ON tOpera.idScaffale = tScaffale.id INNER JOIN tArmadio ON tScaffale.idArmadio = tArmadio.id INNER JOIN tStanza ON tArmadio.idStanza = tStanza.id INNER JOIN tBiblioteca ON tStanza.idBiblioteca = tBiblioteca.id WHERE tBiblioteca.id = :libraryId");
+$query = $pdo->prepare("SELECT *, tOpera.id as idOpera FROM tOpera INNER JOIN tScaffale ON tOpera.idScaffale = tScaffale.id INNER JOIN tArmadio ON tScaffale.idArmadio = tArmadio.id INNER JOIN tStanza ON tArmadio.idStanza = tStanza.id INNER JOIN tBiblioteca ON tStanza.idBiblioteca = tBiblioteca.id WHERE tBiblioteca.id = :libraryId");
 $query->execute(['libraryId' => $libraryId]);
 $elementsData = $query->fetchAll();
 $result = null;
