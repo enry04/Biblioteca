@@ -4,9 +4,9 @@ class OperasManager {
     constructor(parentElement, libraryId, currentCity) {
         this.rootElement = parentElement;
         this.elements = {};
-        this.currentFirst = 3;
-        this.currentMax = 8;
-        this.nBooks = 10;
+        this.currentFirst = 0;
+        this.currentMax = 5;
+        this.nBooks;
         this.libraryId = libraryId;
         this.currentCity = currentCity;
     }
@@ -21,14 +21,19 @@ class OperasManager {
         this.elements = {
             btnNext: this.rootElement.querySelector(".next"),
             btnPrev: this.rootElement.querySelector(".prev"),
-            
         };
     }
 
     async fetchBooks() {
-        await FetchUtil.postData("./php/read-books.php", {}).then((response) => {
+        let operaData = {
+            libraryId: this.libraryId,
+        }
+        await FetchUtil.postData("./php/read-books.php", operaData).then((response) => {
             if (response.status == "success") {
                 let parseData = JSON.parse(response.data);
+                this.nBooks = parseData.length;
+                let counter = 0;
+                console.log(parseData);
                 parseData.forEach(bookData => {
                     let div = document.createElement("div");
                     div.classList.toggle("book-container", true);
@@ -38,9 +43,11 @@ class OperasManager {
                     div.style.backgroundRepeat = "no-repeat";
                     div.style.cursor = "pointer";
                     div.style.transition = "all 1s";
-                    div.id = bookData['id'];
+                    div.id = counter;
+                    div.setAttribute("operaId", bookData['id']);
                     div.classList.toggle("hide", true);
                     this.rootElement.appendChild(div);
+                    counter++;
                 });
                 this.showBooks();
                 this.addBookEventListeners();
@@ -51,15 +58,35 @@ class OperasManager {
     }
 
     showBooks() {
-        for (let i = this.currentFirst; i < this.currentMax; i++) {
-            this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", false);
+        // for (let i = this.currentFirst; i < this.currentMax; i++) {
+        //     this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", false);
+        // }
+        // for (let i = 1; i < this.currentFirst; i++) {
+        //     this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
+        // }
+        // for (let i = this.currentMax; i < 11; i++) {
+        //     this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
+        // }
+        if (this.nBooks < 6) {
+            this.elements.btnNext.classList.toggle("hide", true);
+            this.elements.btnPrev.classList.toggle("hide", true);
+            for (let i = 0; i < this.nBooks; i++) {
+                this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", false);
+            }
+        } else {
+            this.elements.btnNext.classList.toggle("hide", false);
+            this.elements.btnPrev.classList.toggle("hide", false);
+            for (let i = this.currentFirst; i < this.currentMax; i++) {
+                this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", false);
+            }
+            for (let i = 0; i < this.currentFirst; i++) {
+                this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
+            }
+            for (let i = this.currentMax; i < this.nBooks; i++) {
+                this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
+            }
         }
-        for (let i = 1; i < this.currentFirst; i++) {
-            this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
-        }
-        for (let i = this.currentMax; i < 11; i++) {
-            this.rootElement.querySelector(`[id="${i}"]`).classList.toggle("hide", true);
-        }
+
     }
 
     initEventListeners() {
@@ -83,7 +110,7 @@ class OperasManager {
     addBookEventListeners() {
         this.rootElement.querySelectorAll(".book-container").forEach(book => {
             book.addEventListener("click", (event) => {
-                location.href = "../book-page/book.php?operaId=" + event.target.id;
+                location.href = "../book-page/book.php?operaId=" +  event.target.getAttribute("operaid");
             });
         });
     }
