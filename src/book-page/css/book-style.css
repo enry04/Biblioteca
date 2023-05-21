@@ -52,3 +52,19 @@ input[type="button"] {
     height: 72px;
     width: 343px;
 }
+
+.info-text {
+    position: absolute;
+    right: 50px;
+    bottom: -32px;
+    text-align: center;
+    transition: all 2.5s;
+}
+
+.hide-info {
+    opacity: 0;
+}
+
+.show-info {
+    opacity: 1;
+}

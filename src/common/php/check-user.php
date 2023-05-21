@@ -24,10 +24,22 @@ if ($userData != null) {
 
     TokenManager::authenticate($userData['id'], 'utente');
 } else {
-    $result = array(
-        'data' => null,
-        'status' => "not present",
-    );
+    $query = $pdo->prepare('SELECT * FROM tAddetto WHERE nomeUtente=:username AND password=:password');
+    $query->execute(['username' => $username, 'password' => $password]);
+    $userData = $query->fetch();
+    if ($userData != null) {
+        $result = array(
+            'data' => $userData,
+            'status' => "already present",
+        );
+
+        TokenManager::authenticate($userData['id'], 'addetto');
+    } else {
+        $result = array(
+            'data' => null,
+            'status' => "not present",
+        );
+    }
 }
 
 echo json_encode($result);

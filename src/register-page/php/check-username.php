@@ -20,10 +20,20 @@ if ($userData != null) {
         'status' => "already present",
     );
 } else {
-    $result = array(
-        'data' => null,
-        'status' => "not present",
-    );
+    $query = $pdo->prepare('SELECT * FROM tAddetto WHERE nomeUtente=:username');
+    $query->execute(['username' => $username]);
+    $userData = $query->fetch();
+    if ($userData != null) {
+        $result = array(
+            'data' => $userData,
+            'status' => "already present",
+        );
+    } else {
+        $result = array(
+            'data' => null,
+            'status' => "not present",
+        );
+    }
 }
 
 echo json_encode($result);

@@ -33,7 +33,8 @@
                 <h3 class="brown extra-bold date-text">Data di riferimento: <span class="brown paper-date"></span></h3>
                 <h3 class="brown extra-bold">Stato: <span class="brown state"></span></h3>
             </div>
-            <input type="button" value="Prenota libro">
+            <input type="button" value="Prenota libro" class="prenote-btn">
+            <h3 class="brown info-text hide-info"></h3>
         </div>
     </div>
     <script src="./js/book-view.js" type="module"></script>
