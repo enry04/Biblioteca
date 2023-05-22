@@ -18,13 +18,13 @@ require_once("../common/php/token-manager.php");
             if ($_COOKIE['user_type'] == 'utente') {
         ?>
                 <h3>
-                    <a class="brown extra-bold login" href="">Le mie prenotazioni</a>
-                </h3>
-                <h3>
                     <a class="brown extra-bold prenote" href="../prenote-page/prenote.php">Prenota</a>
                 </h3>
                 <h3>
                     <a class="brown extra-bold libraries" href="../main-page/main.php#map">Le biblioteche</a>
+                </h3>
+                <h3>
+                    <a class="brown extra-bold login" href="">Le mie prenotazioni</a>
                 </h3>
                 <h3>
                     <a class="brown extra-bold login" href="../common/php/logout.php">Logout</a>

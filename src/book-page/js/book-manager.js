@@ -39,8 +39,8 @@ class BookManager {
                 let prenotationData = {
                     operaId: this.operaId,
                     userId: CookieManager.getCookie("user_id"),
-                    date: new Date(),
                 }
+                console.log(prenotationData);
                 FetchUtil.postData("./php/check-prenotation.php", prenotationData).then((response) => {
                     if (response.status == "already present") {
                         this.elements.infoText.textContent = "Non puoi riprenotare lo stesso libro!";
