@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Mag 17, 2023 alle 18:50
+-- Creato il: Mag 22, 2023 alle 16:22
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.0.25
 
@@ -154,19 +154,20 @@ INSERT INTO `tAutore` (`id`, `nome`, `cognome`) VALUES
 CREATE TABLE `tBiblioteca` (
   `id` int(11) NOT NULL,
   `latitudine` double NOT NULL,
-  `longitudine` double NOT NULL
+  `longitudine` double NOT NULL,
+  `citta` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `tBiblioteca`
 --
 
-INSERT INTO `tBiblioteca` (`id`, `latitudine`, `longitudine`) VALUES
-(1, 41.902782, 12.496366),
-(2, 38.115687, 13.366757),
-(3, 41.10743, 16.86506),
-(4, 45.6495264, 13.7768182),
-(5, 45.464203, 9.189982);
+INSERT INTO `tBiblioteca` (`id`, `latitudine`, `longitudine`, `citta`) VALUES
+(1, 41.902782, 12.496366, 'Roma'),
+(2, 38.115687, 13.366757, 'Palermo'),
+(3, 41.10743, 16.86506, 'Bari'),
+(4, 45.6495264, 13.7768182, 'Trieste'),
+(5, 45.464203, 9.189982, 'Milano');
 
 -- --------------------------------------------------------
 
@@ -247,7 +248,10 @@ CREATE TABLE `tNumeroTelefono` (
 INSERT INTO `tNumeroTelefono` (`id`, `idUtente`, `telefono`) VALUES
 (2, 3, '443435353'),
 (3, 3, '534535'),
-(4, 3, '4354353');
+(4, 3, '4354353'),
+(5, 4, '2434243242'),
+(6, 4, '2432432234'),
+(7, 4, '4245');
 
 -- --------------------------------------------------------
 
@@ -316,8 +320,16 @@ CREATE TABLE `tPrenotazione` (
   `id` int(11) NOT NULL,
   `idOpera` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
-  `dataPrenotazione` date NOT NULL
+  `dataPrenotazione` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `tPrenotazione`
+--
+
+INSERT INTO `tPrenotazione` (`id`, `idOpera`, `idUtente`, `dataPrenotazione`) VALUES
+(1, 5, 3, '2023-05-22 08:38:30'),
+(2, 5, 4, '2023-05-22 08:44:55');
 
 -- --------------------------------------------------------
 
@@ -627,7 +639,8 @@ CREATE TABLE `tUtente` (
 --
 
 INSERT INTO `tUtente` (`id`, `nome`, `cognome`, `codiceFiscale`, `email`, `password`, `nomeUtente`) VALUES
-(3, 'Enrico', 'Visentin', 'iJCNDN', 'enrico@ciao.com', 'ciao123', 'enri');
+(3, 'Enrico', 'Visentin', 'iJCNDN', 'enrico@ciao.com', 'ciao123', 'enri'),
+(4, 'nicolo', 'Giurg', 'GIUUSC0DWH', 'nicGiurg@ciao', 'ciao123', 'giug');
 
 --
 -- Indici per le tabelle scaricate
@@ -795,7 +808,7 @@ ALTER TABLE `tEnciclopedia`
 -- AUTO_INCREMENT per la tabella `tNumeroTelefono`
 --
 ALTER TABLE `tNumeroTelefono`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `tOpera`
@@ -807,7 +820,7 @@ ALTER TABLE `tOpera`
 -- AUTO_INCREMENT per la tabella `tPrenotazione`
 --
 ALTER TABLE `tPrenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `tPrestito`
@@ -849,7 +862,7 @@ ALTER TABLE `tTipologia`
 -- AUTO_INCREMENT per la tabella `tUtente`
 --
 ALTER TABLE `tUtente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
