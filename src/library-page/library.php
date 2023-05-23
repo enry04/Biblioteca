@@ -33,7 +33,7 @@
     </section>
     <h2 class="not-found hide">Nessun risultato trovato</h2>
     <main>
-        <section class="bookshelf-section book-section">
+        <section class="bookshelf-section book-section admin-library">
         <h1 class="aguafina white title-text">Le opere presenti nella biblioteca di <span class="aguafina white city-text"></span></h1>
             <div class="books-container">
                 <a class="prev"><</a>

@@ -8,6 +8,7 @@
     <title>Biblioteca</title>
     <link rel="stylesheet" href="../common/css/page-style.css">
     <link rel="stylesheet" href="../common/css/header-style.css">
+    <link rel="stylesheet" href="./css/operations-style.css">
     <link rel="icon" href="../common/images/icons/volta-icon.png">
 </head>
 
@@ -17,7 +18,16 @@
     TokenManager::setPage("admin-operations");
     require_once("../common/php/header.php");
     ?>
-    
+    <main>
+        <section class="table-section">
+            <h2 class="brown extra-bold">Le prenotazioni in attesa di conferma</h2>
+            <h2 class="no-data-text hide">Non ci sono prenotazioni in attesa di conferma</h2>
+            <table class="prenotations-table">
+
+            </table>
+        </section>
+    </main>
+    <script src="./js/operations-view.js" type="module"></script>
 </body>
 
 </html>
