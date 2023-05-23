@@ -31,10 +31,26 @@
                 <h3 class="brown extra-bold">ISBN: <span class="brown isbn"></span></h3>
                 <h3 class="brown extra-bold">Casa editrice: <span class="brown home"></span></h3>
                 <h3 class="brown extra-bold date-text">Data di riferimento: <span class="brown paper-date"></span></h3>
-                <h3 class="brown extra-bold">Stato: <span class="brown state"></span></h3>
+                <?php
+                if (!TokenManager::isAuthenticated() || $_COOKIE['user_type'] == 'utente') {
+                ?>
+
+                <?php
+                } else {
+                ?>
+                    <h3 class="brown extra-bold">Stato: <span class="brown state"></span></h3>
+                <?php
+                }
+                ?>
             </div>
-            <input type="button" value="Prenota libro" class="prenote-btn">
-            <h3 class="brown info-text hide-info"></h3>
+            <?php
+            if (!TokenManager::isAuthenticated() || $_COOKIE['user_type'] == 'utente') {
+            ?>
+                <input type="button" value="Prenota libro" class="prenote-btn">
+                <h3 class="brown info-text hide-info"></h3>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <script src="./js/book-view.js" type="module"></script>

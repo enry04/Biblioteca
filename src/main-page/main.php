@@ -26,12 +26,27 @@
                 <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
             </svg>
         </div>
-        <div class="main-description-container">
-            <h1 class="extra-bold brown">Volta, la catena di biblioteche <br> più ricca</h1>
-            <h3 class="extra-bold brown">Le nostre biblioteche, sparse in tutta Italia, dispongono<br>
-                di libri, enciclopedie e carte geo-politiche.<br>
-                Cosa aspetti a prenotare un libro? Fallo subito! </h3>
-        </div>
+        <?php
+        if (TokenManager::isAuthenticated() &&  $_COOKIE['user_type'] == 'addetto') {
+        ?>
+            <div class="main-description-container">
+                <h1 class="extra-bold brown">Benvenuto nell'area riservata agli<br>addetti della biblioteca </h1>
+                <h3 class="extra-bold brown">Nell' area riservata agli addetti di ogni biblioteca<br>
+                    appartenente alla catena Volta, si gestiscono le prenotazioni, i prestiti<br>
+                    e i ritiri di libri enciclopedie e carte geo-politiche</h3>
+            </div>
+        <?php
+        } else {
+        ?>
+            <div class="main-description-container">
+                <h1 class="extra-bold brown">Volta, la catena di biblioteche <br> più ricca</h1>
+                <h3 class="extra-bold brown">Le nostre biblioteche, sparse in tutta Italia, dispongono<br>
+                    di libri, enciclopedie e carte geo-politiche.<br>
+                    Cosa aspetti a prenotare un libro? Fallo subito! </h3>
+            </div>
+        <?php
+        }
+        ?>
         <div class="library-container">
 
         </div>
@@ -39,12 +54,33 @@
     <section class="prenote-section">
         <?php
         if (TokenManager::isAuthenticated()) {
+            if ($_COOKIE['user_type'] == 'utente') {
         ?>
-        <div class="book-cover-container">
-            <h2>
-                <a class="aguafina white" href="../prenote-page/prenote.php">Prenota</a>
-            </h2>
-        </div>
+                <div class="book-cover-container">
+                    <h2>
+                        <a class="aguafina white" href="../prenote-page/prenote.php">Prenota</a>
+                    </h2>
+                </div>
+                <div class="main-description-container">
+                    <h1 class="extra-bold white">Prendi in prestito un libro creando <br> un account</h1>
+                    <h3 class="extra-bold white">Puoi prenotare un prestito di un libro, di un volume di un’ enciclopedia o di una <br>carta geo-politica effettuando l’accesso al sito.<br>Nel caso se l’ opera è già stata presa in prestito, verrai inserito in una coda<br>di attesa fino al momento di restituzione</h3>
+                </div>
+            <?php
+            } else {
+            ?>
+                <div class="book-cover-container">
+                    <h3>
+                        <a class="aguafina white" href="../admin-operations-page/admin-operations.php">Gestione prenotazioni</a>
+                    </h3>
+                </div>
+                <div class="main-description-container">
+                    <h1 class="extra-bold white">Gestisci le prenotazioni, i prestiti e le<br>restituzioni di ogni utente</h1>
+                    <h3 class="extra-bold white">Gli addetti della biblioteca Volta nella sezione riservata, devono occuparsi nella<br> registrazione di nuove opere, la conferma di prenotazioni, la gestione di prestiti e <br> ritiri.<br>
+                    </h3>
+                </div>
+            <?php
+            }
+            ?>
         <?php
         } else {
         ?>
@@ -58,13 +94,14 @@
                     <input type="submit" value="Accedi">
                 </form>
             </div>
+            <div class="main-description-container">
+                <h1 class="extra-bold white">Prendi in prestito un libro creando <br> un account</h1>
+                <h3 class="extra-bold white">Puoi prenotare un prestito di un libro, di un volume di un’ enciclopedia o di una <br>carta geo-politica effettuando l’accesso al sito. <br>Se non hai ancora creato un account puoi <a href="../register-page/register.php" class="click-span white extra-bold">cliccare qui</a>.<br>Nel caso se l’ opera è già stata presa in prestito, verrai inserito in una coda<br>di attesa fino al momento di restituzione</h3>
+            </div>
         <?php
         }
         ?>
-        <div class="main-description-container">
-            <h1 class="extra-bold white">Prendi in prestito un libro creando <br> un account</h1>
-            <h3 class="extra-bold white">Puoi prenotare un prestito di un libro, di un volume di un’ enciclopedia o di una <br>carta geo-politica effettuando l’accesso al sito. <br>Se non hai ancora creato un account puoi <a href="../register-page/register.php" class="click-span white extra-bold">cliccare qui</a>.<br>Nel caso se l’ opera è già stata presa in prestito, verrai inserito in una coda<br>di attesa fino al momento di restituzione</h3>
-        </div>
+
     </section>
     <section class="map-section" id="map">
         <div class="custom-shape-divider-top">

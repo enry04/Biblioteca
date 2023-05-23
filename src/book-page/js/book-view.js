@@ -1,5 +1,6 @@
 import BookManager from "./book-manager.js";
 import FetchUtil from "../../common/js/fetch-util.js";
+import CookieManager from "../../common/js/cookie-manager.js";
 
 let dataToReceive = new URLSearchParams(window.location.search);
 let operaId = dataToReceive.get("operaId");
@@ -23,11 +24,16 @@ await FetchUtil.postData("./php/read-book.php", operaData).then((response) => {
         response.data['dataRiferimento'] == null ? bookManager.elements.paperDateText.classList.toggle("hide", true) : bookManager.setPaperDate(new Date(response.data['dataRiferimento']).toLocaleDateString("en-GB"));
         response.data['numeroVolume'] == null ? bookManager.elements.volumeText.classList.toggle("hide", true) : bookManager.setVolume(response.data['numeroVolume']);
         encyclopediaId = response.data['idEnciclopedia'];
-        bookManager.setState(response.data['stato']);
     } else {
         console.log(response.status);
     }
 });
+
+if (CookieManager.getCookie("user_type") == "addetto") {
+    await FetchUtil.postData("../common/php/check-book-state.php", operaData).then((response) => {
+        bookManager.setState(response.data);
+    })
+}
 
 if (encyclopediaId != null) {
     let data = {

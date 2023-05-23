@@ -15,7 +15,12 @@
 <body>
     <?php
     require_once("../common/php/token-manager.php");
-    TokenManager::setPage("prenote");
+    if (TokenManager::isAuthenticated() && $_COOKIE['user_type'] == 'addetto') {
+        TokenManager::setPage("admin-book");
+    } else {
+        TokenManager::setPage("prenote");
+    }
+
     require_once("../common/php/header.php");
     ?>
     <section class="search-bar-section">
@@ -27,8 +32,9 @@
     <section class="bookshelf-section filter-section hide">
         <h1 class="aguafina white title-text filter-title">Le nostre opere</h1>
         <div class="filters-container">
-            <a class="filter-prev prev"><</a>
-            <a class="filter-next next">></a>
+            <a class="filter-prev prev">
+                <</a>
+                    <a class="filter-next next">></a>
         </div>
     </section>
     <h2 class="not-found hide">Nessun risultato trovato</h2>
@@ -36,24 +42,27 @@
         <section class="bookshelf-section book-section">
             <h1 class="aguafina white title-text">I nostri libri</h1>
             <div class="books-container">
-                <a class="prev"><</a>
-                <a class="next">></a>
+                <a class="prev">
+                    <</a>
+                        <a class="next">></a>
             </div>
-           
+
         </section>
         <section class="bookshelf-section volumes-section">
             <h1 class="aguafina white title-text">I nostri volumi</h1>
             <div class="volumes-container">
-                <a class="prev"><</a>
-                <a class="next">></a>
+                <a class="prev">
+                    <</a>
+                        <a class="next">></a>
             </div>
-           
+
         </section>
         <section class="bookshelf-section papers-section">
             <h1 class="aguafina white title-text">Le nostre carte geo-politiche</h1>
             <div class="papers-container">
-                <a class="prev"><</a>
-                <a class="next">></a>
+                <a class="prev">
+                    <</a>
+                        <a class="next">></a>
             </div>
         </section>
     </main>

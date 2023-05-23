@@ -21,17 +21,23 @@ require_once("../common/php/token-manager.php");
                     <a class="brown extra-bold prenote" href="../prenote-page/prenote.php">Prenota</a>
                 </h3>
                 <h3>
-                    <a class="brown extra-bold login" href="">Le mie prenotazioni</a>
+                    <a class="brown extra-bold prenotations" href="">Le mie prenotazioni</a>
                 </h3>
                 <h3>
                     <a class="brown extra-bold libraries" href="../main-page/main.php#map">Le biblioteche</a>
                 </h3>
                 <h3>
-                    <a class="brown extra-bold login" href="../common/php/logout.php">Logout</a>
+                    <a class="brown extra-bold logout" href="../common/php/logout.php">Logout</a>
                 </h3>
             <?php
             } else if ($_COOKIE['user_type'] == 'addetto') {
             ?>
+                <h3>
+                    <a href="../admin-operations-page/admin-operations.php" class="brown extra-bold operations-management">Operazioni</a>
+                </h3>
+                <h3>
+                    <a href="../prenote-page/prenote.php" class="brown extra-bold books-management">Ricerca libro</a>
+                </h3>
                 <h3>
                     <a class="brown extra-bold login" href="../common/php/logout.php">Logout</a>
                 </h3>

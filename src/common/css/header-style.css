@@ -1,69 +1,77 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 4% 0 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4% 0 3%;
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .logo {
-    background: url("../images/icons/library-icon.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 180px;
-    height: 150px;
+  background: url("../images/icons/library-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 180px;
+  height: 150px;
 }
 
 .logo-container h3 {
-    position: absolute;
-    left: 150px;
-    bottom: 36;
+  position: absolute;
+  left: 150px;
+  bottom: 36;
 }
 
 .voices-container {
-    margin-top: -20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 130px;
-    position: relative;
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 130px;
+  position: relative;
 }
 
 /* .voices-container h3:hover  {
 } */
 
 .active-container {
-    background: url("../images/icons/active.svg");
-    position: absolute;
-    width: 167px;
-    height: 176.5px;
-    z-index: -1;
-    top: -76px;
+  background: url("../images/icons/active.svg");
+  position: absolute;
+  width: 167px;
+  height: 176.5px;
+  z-index: -1;
+  top: -76px;
 }
 
 .active-home {
-    left: -53px;
+  left: -53px;
 }
 
 .active-prenote {
-    left: 145px;
+  left: 145px;
 }
 
 .active-libraries {
-    right: 184px;
+  right: 184px;
 }
 
 .active-login {
-    right: -49px;
+  right: -49px;
+}
+
+.active-admin-book {
+  right: 178px;
+}
+
+.active-admin-operations {
+    left: 161px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }

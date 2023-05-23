@@ -1,5 +1,6 @@
 import CookieManager from "../../common/js/cookie-manager.js";
 import FetchUtil from "../../common/js/fetch-util.js";
+
 class BookManager {
     constructor(parentElement, operaId) {
         this.rootElement = parentElement;
@@ -34,36 +35,38 @@ class BookManager {
     }
 
     initEventListeners() {
-        this.elements.prenoteBtn.addEventListener("click", (event) => {
-            if (CookieManager.getCookie("user_id") != null) {
-                let prenotationData = {
-                    operaId: this.operaId,
-                    userId: CookieManager.getCookie("user_id"),
-                }
-                console.log(prenotationData);
-                FetchUtil.postData("./php/check-prenotation.php", prenotationData).then((response) => {
-                    if (response.status == "already present") {
-                        this.elements.infoText.textContent = "Non puoi riprenotare lo stesso libro!";
-                    } else {
-                        FetchUtil.postData("./php/insert-prenotation.php", prenotationData).then((response) => {
-                            if (response.status == "success") {
-                                this.elements.infoText.textContent = "Libro prenotato! Attendi la conferma dell'addetto... ";
-                            } else {
-                                console.log(response.data);
-                            }
-                        })
+        if (this.elements.prenoteBtn != null) {
+            this.elements.prenoteBtn.addEventListener("click", (event) => {
+                if (CookieManager.getCookie("user_id") != null) {
+                    let prenotationData = {
+                        operaId: this.operaId,
+                        userId: CookieManager.getCookie("user_id"),
                     }
-                });
-            } else {
-                this.elements.infoText.textContent = 'Per prenotare un libro devi prima accedere!';
-            }
-            this.elements.infoText.classList.toggle("hide-info", false);
-            this.elements.infoText.classList.toggle("show-info", true);
-            setTimeout(() => {
-                this.elements.infoText.classList.toggle("hide-info", true);
-                this.elements.infoText.classList.toggle("show-info", false);
-            }, 2500)
-        });
+                    console.log(prenotationData);
+                    FetchUtil.postData("./php/check-prenotation.php", prenotationData).then((response) => {
+                        if (response.status == "already present") {
+                            this.elements.infoText.textContent = "Non puoi riprenotare lo stesso libro!";
+                        } else {
+                            FetchUtil.postData("./php/insert-prenotation.php", prenotationData).then((response) => {
+                                if (response.status == "success") {
+                                    this.elements.infoText.textContent = "Libro prenotato! Attendi la conferma dell'addetto... ";
+                                } else {
+                                    console.log(response.data);
+                                }
+                            })
+                        }
+                    });
+                } else {
+                    this.elements.infoText.textContent = 'Per prenotare un libro devi prima accedere!';
+                }
+                this.elements.infoText.classList.toggle("hide-info", false);
+                this.elements.infoText.classList.toggle("show-info", true);
+                setTimeout(() => {
+                    this.elements.infoText.classList.toggle("hide-info", true);
+                    this.elements.infoText.classList.toggle("show-info", false);
+                }, 2500)
+            });
+        }
     }
 
     setImg(img) {
@@ -96,9 +99,6 @@ class BookManager {
 
     setState(state) {
         this.elements.state.textContent = state;
-        if (state == "Libero") {
-            this.elements.prenoteBtn.value = "Prenota libro";
-        }
     }
 
     setEncyclopedia(encyclopedia) {
