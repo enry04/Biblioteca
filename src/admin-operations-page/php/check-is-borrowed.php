@@ -1,6 +1,6 @@
 <?php
 require('../../common/php/connection.php');
-require('../../common/php/token-manager.php');
+
 
 $connMySQL = new ConnectionMySQL();
 $pdo = $connMySQL->getConnection();
@@ -10,7 +10,7 @@ $data = json_decode($json);
 
 $operaId = $data->operaId;
 
-$query = $pdo->prepare('SELECT stato, COUNT(*) FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId');
+$query = $pdo->prepare('SELECT stato FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId AND tPrenotazione.stato = "in prestito"');
 $query->execute(['operaId' => $operaId]);
 $userData = $query->fetch();
 $result = null;
@@ -18,12 +18,12 @@ $result = null;
 if ($userData != null) {
     $result = array(
         'data' => $userData,
-        'status' => "success",
+        'status' => "already borrowed",
     );
 } else {
     $result = array(
         'data' => null,
-        'status' => "error",
+        'status' => "not borrowed",
     );
 }
 

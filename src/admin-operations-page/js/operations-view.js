@@ -1,23 +1,43 @@
 import FetchUtil from "../../common/js/fetch-util.js";
+import LoansManager from "./loans-manager.js";
 import PrenotationsManager from "./prenotations-manager.js";
 
 const table = document.querySelector(".prenotations-table");
-const noText = document.querySelector(".no-data-text");
+const noPrenotationText = document.querySelector(".no-prenotation-text");
 
 await FetchUtil.postData("./php/read-prenotations.php", {}).then((response) => {
     if (response.status == "success") {
-        noText.classList.toggle("hide", true);
+        noPrenotationText.classList.toggle("hide", true);
         table.classList.toggle("hide", false);
         const prenotationsManager = new PrenotationsManager(table);
         prenotationsManager.init();
         let parseData = JSON.parse(response.data)
         let rowIndex = 0;
         parseData.forEach(prenotation => {
-            prenotationsManager.setRowData(prenotation['nomeUtente'], prenotation['titolo'], new Date(prenotation['dataPrenotazione']).toLocaleDateString("en-GB") + " alle " +  new Date(prenotation['dataPrenotazione']).toLocaleTimeString("en-gb"), prenotation['idPrenotazione'], rowIndex);
+            prenotationsManager.setRowData(prenotation['nomeUtente'], prenotation['titolo'], new Date(prenotation['dataPrenotazione']).toLocaleDateString("en-GB") + " alle " + new Date(prenotation['dataPrenotazione']).toLocaleTimeString("en-gb"), prenotation['idPrenotazione'], rowIndex, prenotation['idOpera']);
             rowIndex++;
         });
     } else {
-        noText.classList.toggle("hide", false);
+        noPrenotationText.classList.toggle("hide", false);
         table.classList.toggle("hide", true);
+    }
+});
+
+const loansTable = document.querySelector(".loans-table");
+const noLoansText = document.querySelector(".no-loan-text");
+
+await FetchUtil.postData("./php/read-loans.php", {}).then((response) => {
+    if (response.status == "success") {
+        loansTable.classList.toggle("hide", false);
+        noLoansText.classList.toggle("hide", true);
+        const loansManager = new LoansManager(loansTable);
+        loansManager.init();
+        let parseData = JSON.parse(response.data);
+        parseData.forEach(loan => {
+            loansManager.setRowData(loan['nomeUtente'], loan['titolo'], new Date(loan['dataPrestito']).toLocaleDateString("en-GB"), loan['nomeAddetto'] + ', appartenente alla biblioteca di ' + loan['citta']);
+        });
+    } else {
+        noLoansText.classList.toggle("hide", false);
+        loansTable.classList.toggle("hide", true);
     }
 })

@@ -31,7 +31,8 @@ await FetchUtil.postData("./php/read-book.php", operaData).then((response) => {
 
 if (CookieManager.getCookie("user_type") == "addetto") {
     await FetchUtil.postData("../common/php/check-book-state.php", operaData).then((response) => {
-        bookManager.setState(response.data['stato']);
+        console.log(response);
+        bookManager.setState(response.data['stato'] + ' da ' + response.data['COUNT(*)'] + ' utenti');
     })
 }
 

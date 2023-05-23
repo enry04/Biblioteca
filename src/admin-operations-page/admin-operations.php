@@ -21,8 +21,22 @@
     <main>
         <section class="table-section">
             <h2 class="brown extra-bold">Le prenotazioni in attesa di conferma</h2>
-            <h2 class="no-data-text hide">Non ci sono prenotazioni in attesa di conferma</h2>
+            <h2 class="no-data-text hide no-prenotation-text">Non ci sono prenotazioni in attesa di conferma</h2>
             <table class="prenotations-table">
+
+            </table>
+        </section>
+        <section class="table-section">
+            <h2 class="brown extra-bold">I libri in prestito</h2>
+            <h2 class="no-data-text hide no-loan-text">Non ci sono prenotazioni in attesa di conferma</h2>
+            <table class="loans-table">
+
+            </table>
+        </section>
+        <section class="table-section">
+            <h2 class="brown extra-bold">Le restituzioni da registrare</h2>
+            <h2 class="no-data-text hide no-return-text">Non ci sono restituzioni da registrare</h2>
+            <table class="returns-table">
 
             </table>
         </section>

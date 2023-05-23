@@ -1,9 +1,10 @@
+import CookieManager from "../../common/js/cookie-manager.js";
 import FetchUtil from "../../common/js/fetch-util.js";
 
 class PrenotationsManager {
     constructor(tableElement) {
         this.rootElement = tableElement;
-        this.headerValues = ["Utente", "Opera", "Data di prenotazione", "Conferma", "Annulla"];
+        this.headerValues = ["Utente", "Titolo opera", "Data di prenotazione", "Conferma", "Annulla"];
         this.tHead = this.rootElement.createTHead();
         this.tBody = this.rootElement.createTBody();
     }
@@ -20,8 +21,8 @@ class PrenotationsManager {
             row.appendChild(th);
         }
     }
-    setRowData(user, titolo, dataPrenotazione, id, rowIndex) {
-        let data = [user, titolo, dataPrenotazione, this.getConfirmBtn(rowIndex, id), this.getRemoveBtn(rowIndex, id)];
+    setRowData(user, titolo, dataPrenotazione, id, rowIndex, operaId) {
+        let data = [user, titolo, dataPrenotazione, this.getConfirmBtn(rowIndex, id, operaId), this.getRemoveBtn(rowIndex, id, operaId)];
         let row = this.tBody.insertRow();
         row.id = rowIndex;
         for (let i = 0; i < this.headerValues.length; i++) {
@@ -39,27 +40,40 @@ class PrenotationsManager {
     initEventListeners() {
         const confirmBtns = this.rootElement.querySelectorAll(".confirm-btn");
         confirmBtns.forEach(btn => {
+            btn.disabled = true;
             btn.addEventListener("click", (event) => {
                 const data = {
                     prenotationId: event.target.id,
                     state: "in prestito",
+                    operaId: event.target.attributes.getNamedItem("operaId").value,
+                    adminId: CookieManager.getCookie("user_id"),
                 }
-                FetchUtil.postData("./php/update-prenotation.php", data).then((response) => {
-                    if (response.status == "success") {
-                        FetchUtil.postData("./php/insert-loan.php",).then((response) => {
+                let row = this.tBody.querySelector(`[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
+                FetchUtil.postData("./php/check-is-borrowed.php", data).then((response) => {
+                    if (response.status == "not borrowed") {
+                        FetchUtil.postData("./php/update-prenotation.php", data).then((response) => {
                             if (response.status == "success") {
-                                let row = this.tBody.querySelector(`[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
-                                let td = row.querySelector(":nth-child(4)");
-                                td.innerHTML = "Prenotazione confermata";
+                                FetchUtil.postData("./php/insert-loan.php", data).then((response) => {
+                                    if (response.status == "success") {
+                                        let td = row.querySelector(":nth-child(4)");
+                                        let removeTd = row.querySelector(":nth-child(5)");
+                                        td.innerHTML = "Prenotazione confermata";
+                                        removeTd.innerHTML = "Annullamento non possibile";
+                                    } else {
+                                        console.log(response.data);
+                                    }
+                                });
                             } else {
                                 console.log(response.data);
                             }
                         });
                     } else {
-                        console.log(response.data);
+                        let td = row.querySelector(":nth-child(4)");
+                        td.innerHTML = "Conferma non possibile, libro già in prestito";
                     }
                 });
             });
+            btn.disabled = false;
         });
         const removeBtns = this.rootElement.querySelectorAll(".remove-btn");
         removeBtns.forEach(btn => {
@@ -88,24 +102,26 @@ class PrenotationsManager {
         }
     }
 
-    getConfirmBtn(rowIndex, id) {
+    getConfirmBtn(rowIndex, id, operaId) {
         let input = document.createElement("input");
         input.setAttribute("type", "button");
         input.setAttribute("value", "Conferma");
         input.classList.toggle("confirm-btn", true);
         input.classList.toggle("table-btn", true);
         input.setAttribute("rowIndex", rowIndex);
+        input.setAttribute("operaId", operaId);
         input.id = id;
         return input;
     }
 
-    getRemoveBtn(rowIndex, id) {
+    getRemoveBtn(rowIndex, id, operaId) {
         let input = document.createElement("input");
         input.setAttribute("type", "button");
         input.setAttribute("value", "Annulla");
         input.classList.toggle("remove-btn", true);
         input.classList.toggle("table-btn", true);
         input.setAttribute("rowIndex", rowIndex);
+        input.setAttribute("operaId", operaId);
         input.id = id;
         return input;
     }

@@ -4,7 +4,7 @@ require('../../common/php/connection.php');
 $connMySQL = new ConnectionMySQL();
 $pdo = $connMySQL->getConnection();
 
-$query = $pdo->query('SELECT tPrenotazione.id AS idPrenotazione ,tPrenotazione.*, tUtente.nomeUtente, tOpera.titolo FROM tPrenotazione INNER JOIN tOpera ON tPrenotazione.idOpera = tOpera.id INNER JOIN tUtente ON tPrenotazione.idUtente = tUtente.id WHERE stato = "da confermare"');
+$query = $pdo->query('SELECT tPrenotazione.id AS idPrenotazione ,tPrenotazione.*, tUtente.nomeUtente, tOpera.titolo, tOpera.id AS idOpera FROM tPrenotazione INNER JOIN tOpera ON tPrenotazione.idOpera = tOpera.id INNER JOIN tUtente ON tPrenotazione.idUtente = tUtente.id WHERE stato = "prenotato" ORDER BY dataPrenotazione');
 $booksData = $query->fetchAll();
 $result = null;
 
