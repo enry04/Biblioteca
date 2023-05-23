@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Mag 22, 2023 alle 16:22
+-- Creato il: Mag 23, 2023 alle 17:56
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.0.25
 
@@ -320,16 +320,18 @@ CREATE TABLE `tPrenotazione` (
   `id` int(11) NOT NULL,
   `idOpera` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
-  `dataPrenotazione` datetime NOT NULL
+  `dataPrenotazione` datetime NOT NULL,
+  `stato` varchar(50) NOT NULL DEFAULT 'libero'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `tPrenotazione`
 --
 
-INSERT INTO `tPrenotazione` (`id`, `idOpera`, `idUtente`, `dataPrenotazione`) VALUES
-(1, 5, 3, '2023-05-22 08:38:30'),
-(2, 5, 4, '2023-05-22 08:44:55');
+INSERT INTO `tPrenotazione` (`id`, `idOpera`, `idUtente`, `dataPrenotazione`, `stato`) VALUES
+(1, 5, 3, '2023-05-22 08:38:30', 'da confermare'),
+(2, 5, 4, '2023-05-22 08:44:55', 'da confermare'),
+(3, 16, 3, '2023-05-23 08:25:28', 'da confermare');
 
 -- --------------------------------------------------------
 
@@ -820,7 +822,7 @@ ALTER TABLE `tOpera`
 -- AUTO_INCREMENT per la tabella `tPrenotazione`
 --
 ALTER TABLE `tPrenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `tPrestito`
