@@ -10,51 +10,21 @@ $data = json_decode($json);
 
 $operaId = $data->operaId;
 
-$query = $pdo->prepare('SELECT * FROM tOpera INNER JOIN tPrenotazione ON tPrenotazione.idOpera = tOpera.id WHERE tOpera.id = :operaId');
+$query = $pdo->prepare('SELECT stato FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId');
 $query->execute(['operaId' => $operaId]);
-$userData = $query->fetchAll();
+$userData = $query->fetch();
 $result = null;
 
-if ($userData == null) {
+if ($userData != null) {
     $result = array(
-        'data' => json_encode($userData),
-        'status' => "libero",
+        'data' => $userData,
+        'status' => "success",
     );
 } else {
-    $query = $pdo->prepare('SELECT * FROM tOpera INNER JOIN tPrenotazione ON tPrenotazione.idOpera = tOpera.id INNER JOIN tPrestito ON tPrestito.idPrenotazione = tPrenotazione.id INNER JOIN tRitiro ON tRitiro.idPrestito = tPrestito.id WHERE tOpera.id = :operaId');
-    $query->execute(['operaId' => $operaId]);
-    $userData = $query->fetchAll();
-    if ($userData != null) {
-        $result = array(
-            'data' => json_encode($userData),
-            'status' => 'Libero',
-        );
-    } else {
-        $query = $pdo->prepare('SELECT * FROM tOpera INNER JOIN tPrenotazione ON tPrenotazione.idOpera = tOpera.id INNER JOIN tPrestito ON tPrestito.idPrenotazione = tPrenotazione.id WHERE tOpera.id = :operaId');
-        $query->execute(['operaId' => $operaId]);
-        $userData = $query->fetchAll();
-        if ($userData != null) {
-            $result = array(
-                'data' => json_encode($userData),
-                'status' => "In prestito",
-            );
-        } else {
-            $query = $pdo->prepare('SELECT * FROM tOpera INNER JOIN tPrenotazione ON tPrenotazione.idOpera = tOpera.id WHERE tOpera.id = :operaId');
-            $query->execute(['operaId' => $operaId]);
-            $userData = $query->fetchAll();
-            if ($userData != null) {
-                $result = array(
-                    'data' => json_encode($userData),
-                    'status' => "Prenotato",
-                );
-            } else {
-                $result = array(
-                    'data' => null,
-                    'status' => "error",
-                );
-            }
-        }
-    }
+    $result = array(
+        'data' => null,
+        'status' => "error",
+    );
 }
 
 echo json_encode($result);
