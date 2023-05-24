@@ -7,6 +7,7 @@ const librariesText = document.querySelector(".libraries");
 const loginText = document.querySelector(".login");
 const bookManagementText = document.querySelector(".books-management");
 const operationsText = document.querySelector(".operations-management");
+const prenotationsText = document.querySelector(".prenotations");
 
 switch (CookieManager.getCookie("current_page")) {
     case 'home':
@@ -38,6 +39,11 @@ switch (CookieManager.getCookie("current_page")) {
         parentElement.classList.toggle("active-admin-operations");
         operationsText.classList.toggle("brown", false);
         operationsText.classList.toggle("white", true);
+        break;
+    case 'prenotations':
+        parentElement.classList.toggle("active-prenotations");
+        prenotationsText.classList.toggle("brown", false);
+        prenotationsText.classList.toggle("white", true);
         break;
     default:
         parentElement.classList.toggle("hide", true);

@@ -10,7 +10,7 @@ $data = json_decode($json);
 
 $operaId = $data->operaId;
 
-$query = $pdo->prepare('SELECT stato FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId AND tPrenotazione.stato = "in prestito"');
+$query = $pdo->prepare('SELECT stato FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId AND (tPrenotazione.stato = "in prestito" OR tPrenotazione.stato = "Restituito")');
 $query->execute(['operaId' => $operaId]);
 $userData = $query->fetch();
 $result = null;

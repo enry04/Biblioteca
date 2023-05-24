@@ -40,8 +40,8 @@ class PrenotationsManager {
     initEventListeners() {
         const confirmBtns = this.rootElement.querySelectorAll(".confirm-btn");
         confirmBtns.forEach(btn => {
-            btn.disabled = true;
             btn.addEventListener("click", (event) => {
+                btn.disabled = true;
                 const data = {
                     prenotationId: event.target.id,
                     state: "in prestito",
@@ -72,12 +72,13 @@ class PrenotationsManager {
                         td.innerHTML = "Conferma non possibile, libro già in prestito";
                     }
                 });
+                btn.disabled = false;
             });
-            btn.disabled = false;
         });
         const removeBtns = this.rootElement.querySelectorAll(".remove-btn");
         removeBtns.forEach(btn => {
             btn.addEventListener("click", (event) => {
+                btn.disabled = true;
                 const data = {
                     prenotationId: event.target.id,
                     state: "in prestito",
@@ -91,6 +92,7 @@ class PrenotationsManager {
                         console.log(response.data);
                     }
                 });
+                btn.disabled = false;
             });
         });
     }

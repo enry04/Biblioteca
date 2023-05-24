@@ -21,7 +21,7 @@ require_once("../common/php/token-manager.php");
                     <a class="brown extra-bold prenote" href="../prenote-page/prenote.php">Prenota</a>
                 </h3>
                 <h3>
-                    <a class="brown extra-bold prenotations" href="">Le mie prenotazioni</a>
+                    <a class="brown extra-bold prenotations" href="../prenotations-page/prenotations.php">Le prenotazioni</a>
                 </h3>
                 <h3>
                     <a class="brown extra-bold libraries" href="../main-page/main.php#map">Le biblioteche</a>

@@ -69,7 +69,11 @@ header {
 }
 
 .active-admin-operations {
-    left: 161px;
+  left: 161px;
+}
+
+.active-prenotations {
+  left: 394px;
 }
 
 .hide {
