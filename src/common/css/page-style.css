@@ -1,0 +1,64 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: regular;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F0EAD8;
+}
+
+.extra-bold {
+    font-family: extra-bold !important;
+}
+
+.aguafina {
+    font-family: aguafina !important;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+.brown {
+    color: #3D2617 !important;
+}
+
+.white {
+    color: #F0EAD8 !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: regular;
+    src: url("../font/AbhayaLibre-Regular.ttf");
+}
+
+@font-face {
+    font-family: extra-bold;
+    src: url("../font/AbhayaLibre-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: aguafina;
+    src: url("../font/AguafinaScript-Regular.ttf");
+}

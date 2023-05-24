@@ -1,0 +1,70 @@
+body {
+    height: 100vh;
+}
+
+.main-overlay {
+    position: absolute;
+    margin-top: 75px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 70px;
+    margin-left: 200px;
+    position: relative;
+}
+
+.book-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 396px;
+    height: 561px;
+}
+
+.description-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+}
+
+input[type="button"] {
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    bottom: 0;
+    background-color: #3D2617;
+    color: #F0EAD8;
+    font-size: 30px;
+    border-radius: 10px;
+    height: 72px;
+    width: 343px;
+}
+
+.info-text {
+    position: absolute;
+    right: 50px;
+    bottom: -32px;
+    text-align: center;
+    transition: all 2.5s;
+}
+
+.hide-info {
+    opacity: 0;
+}
+
+.show-info {
+    opacity: 1;
+}

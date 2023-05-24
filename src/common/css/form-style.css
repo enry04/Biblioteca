@@ -1,0 +1,90 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+input:not(input[type="submit"]) {
+  padding: 5px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: none;
+  width: 220px;
+  font-size: 20px;
+  outline: 0;
+}
+
+input[type="submit"] {
+  width: 170px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 22px;
+}
+
+input[type="submit"]:hover {
+  font-size: 23px;
+}
+
+::placeholder {
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+
+input:not(input[type="submit"]):hover::placeholder {
+  opacity: 1;
+}
+
+.input-container {
+  position: relative;
+}
+
+input ~ h4 {
+  position: absolute;
+  margin-top: 0px !important;
+  bottom: 7px;
+  left: 4px;
+  color: #ff2929ee;
+}
+
+.error {
+  border-bottom: 1px solid #ff2929ee !important;
+  animation: shake 0.2s ease-in-out 0s 2;
+  color: #ff2929ee !important;
+}
+
+.error::placeholder {
+  color: #ff2929ee;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.start-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}

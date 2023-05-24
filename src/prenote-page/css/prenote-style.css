@@ -1,0 +1,124 @@
+.search-bar-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 130px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+}
+
+.filter {
+    margin-left: 40px;
+    width: 900px;
+    padding: 10px 80px 10px 20px;
+    height: 60px;
+    background-color: #F8F6EF;
+    outline: 0;
+    border: none;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+::placeholder {
+    color: #3D2617;
+}
+
+.submit-btn {
+    border-radius: 10px;
+    background-color: #3D2617;
+    color: #F8F6EF;
+    font-size: 30px;
+    height: 60px;
+    width: 197px;
+    cursor: pointer;
+}
+
+main,
+.filter-section {
+    margin: 150px 50px 100px 50px;
+}
+
+.bookshelf-section {
+    background: linear-gradient(90deg, rgba(29, 5, 0, .5), rgba(61, 0, 0, .1) 20%, transparent, rgba(61, 0, 0, .1) 60%, rgba(29, 5, 0, .5)),
+        linear-gradient(180deg, transparent 0, transparent 10px, rgba(255, 191, 0, .4) 0, rgba(255, 191, 0, .1) 15px, transparent 50px),
+        linear-gradient(180deg, #543721 0, #5a3b23 10px, #7b5130 0, #5f432d);
+    padding: 100px 50px 0 50px;
+    position: relative;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 73%;
+    transform: translate(0, -50%);
+    width: auto;
+    color: #3D2617;
+    padding: 10px;
+    background-color: #F0EAD8;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 60px;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+.next {
+    right: 130px;
+}
+
+.prev {
+    left: 130px;
+}
+
+.bookshelf-section:nth-of-type(1) {
+    border-radius: 2px 2px 0 0;
+}
+
+.bookshelf-section:nth-of-type(3), .admin-library {
+    border-radius: 0 0 2px 2px;
+    padding-bottom: 10px;
+}
+
+.filter-section {
+    border-radius: 2px;
+    padding-bottom: 10px;
+}
+
+.title-text {
+    font-size: 80px;
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.books-container,
+.volumes-container,
+.papers-container,
+.filters-container {
+    display: flex;
+    justify-content: center;
+    column-gap: 70px;
+    flex-direction: row;
+}
+
+.book-container {
+    width: 200px;
+    height: 300px;
+    min-width: 200px;
+    min-height: 300px;
+    margin-left: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 100px;
+    color: #ff2929ee;
+}
