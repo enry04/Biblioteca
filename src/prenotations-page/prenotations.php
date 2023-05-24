@@ -21,14 +21,14 @@
     <main>
         <section class="table-section">
             <h2 class="brown extra-bold">Le prenotazioni in attesa di conferma</h2>
-            <h2 class="no-data-text hide no-prenotation-text">Non ci sono prenotazioni da confermare</h2>
+            <h2 class="no-data-text hide no-prenotation-text">Non ci sono prenotazioni in attesa di conferma</h2>
             <table class="prenotations-table">
 
             </table>
         </section>
         <section class="table-section">
-            <h2 class="brown extra-bold">Le opere in tuo possesso</h2>
-            <h2 class="no-data-text hide no-loan-text">Non hai nessun prestito</h2>
+            <h2 class="brown extra-bold">Le opere prese in prestito</h2>
+            <h2 class="no-data-text hide no-loan-text">Non è presente nessun prestito</h2>
             <table class="loans-table">
 
             </table>

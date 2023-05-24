@@ -39,6 +39,7 @@
                 } else {
                 ?>
                     <h3 class="brown extra-bold">Stato: <span class="brown state"></span></h3>
+                    <h3 class="brown extra-bold">Biblioteca di appartenenza: <span class="brown library"></span></h3>
                 <?php
                 }
                 ?>

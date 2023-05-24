@@ -129,33 +129,6 @@ class RegistrationManager {
                                                                     } else {
                                                                         this.rootElement.querySelectorAll(".phone-number")[2].classList.toggle("error", false);
                                                                         this.rootElement.querySelector(".third-telephone-error").classList.toggle("hide", true);
-                                                                        const userData = {
-                                                                            name: this.elements.name.value,
-                                                                            surname: this.elements.surname.value,
-                                                                            email: uniqueUserData.email,
-                                                                            taxCode: uniqueUserData.taxCode,
-                                                                            username: uniqueUserData.username,
-                                                                            password: this.elements.password.value,
-                                                                        }
-
-                                                                        await FetchUtil.postData("./php/insert-user.php", userData).then(async (response) => {
-                                                                            if (response.status == "success") {
-                                                                                const phoneData = {
-                                                                                    userId: (JSON.parse(response.data))['LAST_INSERT_ID()'],
-                                                                                    counter: telephones.length,
-                                                                                    telephones: telephones,
-                                                                                }
-                                                                                await FetchUtil.postData("./php/insert-telephone-numbers.php", phoneData).then((response) => {
-                                                                                    if (response.status == "success") {
-                                                                                        location.href = "../login-page/login.php";
-                                                                                    } else {
-                                                                                        console.log(response.data);
-                                                                                    }
-                                                                                })
-                                                                            } else {
-                                                                                console.log(response.data);
-                                                                            }
-                                                                        });
                                                                     }
                                                                 })
                                                             }
@@ -163,7 +136,34 @@ class RegistrationManager {
                                                     })
                                                 }
                                             }
-                                        })
+                                        });
+                                        const userData = {
+                                            name: this.elements.name.value,
+                                            surname: this.elements.surname.value,
+                                            email: uniqueUserData.email,
+                                            taxCode: uniqueUserData.taxCode,
+                                            username: uniqueUserData.username,
+                                            password: this.elements.password.value,
+                                        }
+
+                                        await FetchUtil.postData("./php/insert-user.php", userData).then(async (response) => {
+                                            if (response.status == "success") {
+                                                const phoneData = {
+                                                    userId: (JSON.parse(response.data))['LAST_INSERT_ID()'],
+                                                    counter: telephones.length,
+                                                    telephones: telephones,
+                                                }
+                                                await FetchUtil.postData("./php/insert-telephone-numbers.php", phoneData).then((response) => {
+                                                    if (response.status == "success") {
+                                                        location.href = "../login-page/login.php";
+                                                    } else {
+                                                        console.log(response.data);
+                                                    }
+                                                })
+                                            } else {
+                                                console.log(response.data);
+                                            }
+                                        });
                                     }
                                 }
                             })

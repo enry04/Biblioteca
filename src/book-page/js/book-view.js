@@ -21,9 +21,13 @@ await FetchUtil.postData("./php/read-book.php", operaData).then((response) => {
         bookManager.setTypology(response.data['nomeTipologia']);
         bookManager.setHome(response.data['nomeCasaEditrice']);
         bookManager.setImg("../common/" + response.data['copertina']);
+        if (CookieManager.getCookie("user_type") == "addetto") {
+            bookManager.setLibrary("Biblioteca di " + response.data['citta']);
+        }
         response.data['dataRiferimento'] == null ? bookManager.elements.paperDateText.classList.toggle("hide", true) : bookManager.setPaperDate(new Date(response.data['dataRiferimento']).toLocaleDateString("en-GB"));
         response.data['numeroVolume'] == null ? bookManager.elements.volumeText.classList.toggle("hide", true) : bookManager.setVolume(response.data['numeroVolume']);
         encyclopediaId = response.data['idEnciclopedia'];
+
     } else {
         console.log(response.status);
     }
@@ -31,8 +35,7 @@ await FetchUtil.postData("./php/read-book.php", operaData).then((response) => {
 
 if (CookieManager.getCookie("user_type") == "addetto") {
     await FetchUtil.postData("../common/php/check-book-state.php", operaData).then((response) => {
-        console.log(response);
-        bookManager.setState(response.data['stato'] + ' da ' + response.data['COUNT(*)'] + ' utenti');
+        bookManager.setState(response.data == null ? "Libero" : response.data['stato']);
     })
 }
 

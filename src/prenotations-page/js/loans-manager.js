@@ -46,7 +46,7 @@ class LoansManager {
                     prenotationId: event.target.id,
                     state: 'Restituito',
                 };
-                let row = this.tBody.querySelector(`[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
+                let row = this.tBody.querySelector(`tr[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
                 FetchUtil.postData("../admin-operations-page/php/update-prenotation.php", data).then((response) => {
                     if (response.status == "success") {
                         let td = row.querySelector(":nth-child(4)");

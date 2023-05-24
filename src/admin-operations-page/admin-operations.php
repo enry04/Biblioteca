@@ -34,8 +34,8 @@
             </table>
         </section>
         <section class="table-section">
-            <h2 class="brown extra-bold">Le restituzioni da registrare</h2>
-            <h2 class="no-data-text hide no-return-text">Non ci sono restituzioni da registrare</h2>
+            <h2 class="brown extra-bold">Le restituzioni da registrare nella tua sede</h2>
+            <h2 class="no-data-text hide no-return-text">Non ci sono restituzioni da registrare nella tua sede</h2>
             <table class="returns-table">
                 
             </table>

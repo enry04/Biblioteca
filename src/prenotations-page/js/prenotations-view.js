@@ -39,6 +39,7 @@ await FetchUtil.postData("./php/read-loans.php", data).then((response) => {
         let rowIndex = 0;
         parseData.forEach(loan => {
             loansManager.setRowData(loan['titolo'], new Date(loan['dataPrestito']).toLocaleDateString("en-GB"), loan['nomeAddetto'] + ', appartenente alla biblioteca di ' + loan['citta'], loan['idPrenotazione'], rowIndex, loan['idOpera']);
+            rowIndex++;
         });
     } else {
         noLoansText.classList.toggle("hide", false);

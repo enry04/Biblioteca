@@ -10,7 +10,7 @@ $data = json_decode($json);
 
 $operaId = $data->operaId;
 
-$query = $pdo->prepare('SELECT stato, COUNT(*) FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId');
+$query = $pdo->prepare('SELECT stato FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId AND stato = "in prestito"');
 $query->execute(['operaId' => $operaId]);
 $userData = $query->fetch();
 $result = null;
@@ -21,10 +21,22 @@ if ($userData != null) {
         'status' => "success",
     );
 } else {
-    $result = array(
-        'data' => null,
-        'status' => "error",
-    );
+
+    $query = $pdo->prepare('SELECT stato FROM tPrenotazione  WHERE tPrenotazione.idOpera = :operaId AND stato = "Prenotato"');
+    $query->execute(['operaId' => $operaId]);
+    $userData = $query->fetch();
+
+    if ($userData != null) {
+        $result = array(
+            'data' => $userData,
+            'status' => "success",
+        );
+    } else {
+        $result = array(
+            'data' => null,
+            'status' => "error",
+        );
+    }
 }
 
 echo json_encode($result);

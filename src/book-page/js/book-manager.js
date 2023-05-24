@@ -31,6 +31,8 @@ class BookManager {
             paperDateText: this.rootElement.querySelector(".date-text"),
             prenoteBtn: this.rootElement.querySelector(".prenote-btn"),
             infoText: this.rootElement.querySelector(".info-text"),
+            library: this.rootElement.querySelector(".library"),
+
         }
     }
 
@@ -41,6 +43,7 @@ class BookManager {
                     let prenotationData = {
                         operaId: this.operaId,
                         userId: CookieManager.getCookie("user_id"),
+                        state: "Prenotato",
                     }
                     console.log(prenotationData);
                     FetchUtil.postData("./php/check-prenotation.php", prenotationData).then((response) => {
@@ -99,6 +102,10 @@ class BookManager {
 
     setState(state) {
         this.elements.state.textContent = state;
+    }
+
+    setLibrary(library) {
+        this.elements.library.textContent = library;
     }
 
     setEncyclopedia(encyclopedia) {

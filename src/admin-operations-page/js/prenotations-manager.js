@@ -39,40 +39,42 @@ class PrenotationsManager {
 
     initEventListeners() {
         const confirmBtns = this.rootElement.querySelectorAll(".confirm-btn");
+        console.log(confirmBtns);
         confirmBtns.forEach(btn => {
-            btn.addEventListener("click", (event) => {
-                btn.disabled = true;
+            btn.addEventListener("click", async (event) => {
                 const data = {
                     prenotationId: event.target.id,
                     state: "in prestito",
                     operaId: event.target.attributes.getNamedItem("operaId").value,
                     adminId: CookieManager.getCookie("user_id"),
+                };
+                let row = this.tBody.querySelector(`tr[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
+                if (!btn.disabled) {
+                    btn.disabled = true;
+                    await FetchUtil.postData("./php/check-is-borrowed.php", data).then(async (response) => {
+                        if (response.status == "not borrowed") {
+                            await FetchUtil.postData("./php/update-prenotation.php", data).then(async (response) => {
+                                if (response.status == "success") {
+                                    await FetchUtil.postData("./php/insert-loan.php", data).then((response) => {
+                                        if (response.status == "success") {
+                                            let td = row.querySelector(":nth-child(4)");
+                                            let removeTd = row.querySelector(":nth-child(5)");
+                                            td.innerHTML = "Prenotazione confermata";
+                                            removeTd.innerHTML = "Annullamento non possibile";
+                                        } else {
+                                            console.log(response.data);
+                                        }
+                                    });
+                                } else {
+                                    console.log(response.data);
+                                }
+                            });
+                        } else {
+                            let td = row.querySelector(":nth-child(4)");
+                            td.innerHTML = "Conferma non possibile, libro già in prestito";
+                        }
+                    });
                 }
-                let row = this.tBody.querySelector(`[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
-                FetchUtil.postData("./php/check-is-borrowed.php", data).then((response) => {
-                    if (response.status == "not borrowed") {
-                        FetchUtil.postData("./php/update-prenotation.php", data).then((response) => {
-                            if (response.status == "success") {
-                                FetchUtil.postData("./php/insert-loan.php", data).then((response) => {
-                                    if (response.status == "success") {
-                                        let td = row.querySelector(":nth-child(4)");
-                                        let removeTd = row.querySelector(":nth-child(5)");
-                                        td.innerHTML = "Prenotazione confermata";
-                                        removeTd.innerHTML = "Annullamento non possibile";
-                                    } else {
-                                        console.log(response.data);
-                                    }
-                                });
-                            } else {
-                                console.log(response.data);
-                            }
-                        });
-                    } else {
-                        let td = row.querySelector(":nth-child(4)");
-                        td.innerHTML = "Conferma non possibile, libro già in prestito";
-                    }
-                });
-                btn.disabled = false;
             });
         });
         const removeBtns = this.rootElement.querySelectorAll(".remove-btn");
@@ -81,13 +83,15 @@ class PrenotationsManager {
                 btn.disabled = true;
                 const data = {
                     prenotationId: event.target.id,
-                    state: "in prestito",
+                    state: "Annullata",
                 }
                 FetchUtil.postData("./php/update-prenotation.php", data).then((response) => {
                     if (response.status == "success") {
                         let row = this.tBody.querySelector(`[id="${event.target.attributes.getNamedItem('rowIndex').value}"]`);
                         let td = row.querySelector(":nth-child(5)");
                         td.innerHTML = "Prenotazione annullata";
+                        let confirmTd = row.querySelector(":nth-child(4)");
+                        confirmTd.innerHTML = "Conferma non possibile";
                     } else {
                         console.log(response.data);
                     }
